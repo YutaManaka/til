@@ -1,0 +1,56 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  font: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px
+  font-color: #767676;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+  width: auto;
+  max-width: 1120px;
+  height: 120px;
+  padding: 0 15px;
+}
+
+.container .text-muted .logo{
+  margin: 20px 0;
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px
+  font: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  color: #767676;
+}
+a:hover {
+  text-decoration: underline;
+  font-size: 14px
+  font: Circular, -apple-system, system-ui, Roboto, "Helvetica Neue", sans-serif;
+  color: #767676;
+
+}
+
+.logo img{
+  width: 30px;
+  height: 30px;
+  line-height: 120px;
+}

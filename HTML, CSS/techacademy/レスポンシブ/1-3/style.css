@@ -1,0 +1,46 @@
+body {
+	background-color: #e8f3f8;
+	font: 1em/1.5 sans-serif;
+}
+form {
+	margin: 80px auto;
+	width: 320px;
+	color: steelblue;
+}
+input {
+	padding: 10px;
+	border-radius: 5px;
+	font-size: inherit;
+}
+input[type="text"]{
+	display: block;
+	margin-bottom: 25px;
+	width: 100%;
+	border: 2px solid steelblue;
+}
+input[type="radio"]{
+	margin: 0 8px 25px 18px;
+}
+input[type="radio"]:first-child{
+	margin-left: 0;
+}
+input[type="submit"]{
+	width: 344px+
+	height: 45px;
+	border: none;
+	background-color: steelblue;
+	color: white;
+	cursor: pointer;
+}
+
+/* 擬似要素を使うと */
+:disabled {
+	background-color: #ddd
+}
+input[type="text"]:enabled {
+	background-color: yellow; 
+}
+
+input[type="radio"]:checked + label{
+	font-weight: bold;
+}

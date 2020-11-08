@@ -1,0 +1,15 @@
+@charset "utf-8";
+body {
+	padding: 1em 6em;
+}
+
+/* text-decorationの練習  */
+body {
+	background-color: brown;
+}
+h1 {
+	font-size: 50px;
+	color: skyblue;
+	text-shadow: 4px 3px 0px rgba( 255, 255, 255, 1.0),
+				 9px 8px 0px rgba( 0, 0, 0, 0.15)
+}

@@ -1,0 +1,33 @@
+body {
+	padding: 1% 26.5%;
+	background-color: #e0eef5;
+	color: #333;
+}
+p, div {
+	margin: 55px 0;
+	font: 3em sans-serif;
+}
+a {
+	color: royalblue;
+	text-decoration: none;
+	font: 2.25em sans-serif;
+}
+
+/* 擬似要素を使うと */
+.phone::before {
+	content: "\2706";
+}
+.dload::before,
+.dload::after {
+	content: "";
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background-color: royalblue;
+	border-radius: 50%;
+	margin: 1px;
+}
+.dload {
+	border: 1px solid;
+	padding: 10px;
+}

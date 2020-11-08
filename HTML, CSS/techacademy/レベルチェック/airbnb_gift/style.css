@@ -1,0 +1,62 @@
+/*nav装飾*/
+.dropdown-item  {
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+.dropdown-item:hover {
+text-decoration: underline;
+}
+.dp1, .dp2, .dpm, .dropdown-item {
+	font:Circular, "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", "MS Gothic", "ＭＳ ゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-color: #484848;
+}
+.dp1  {
+	font-size: 12px;
+}
+.dp2  {
+	font-size: 14px;
+}
+.dpi {
+    float: right;
+    height: 20px
+    width: 20px;
+}
+.dpm {
+	font-size: 14px;
+	font-weight: bold;
+}
+/*container1装飾*/
+ .jumbotron { background:url(img/bk.jpg) center no-repeat; background-size: cover;}
+
+#container1{
+	height: 600px;
+}
+/*container2装飾*/
+#container2{
+	height: 335px;
+}
+@media screen and (max-width:768px) {
+	#container2{
+	height: 650px;
+ }
+}
+
+/*container3装飾*/
+#container3 {
+	height: 440px;
+ 	background-color: #327A86
+ }
+
+
+
+/*container4装飾*/
+ #container4{
+	height: 260px;
+}
+
+
+.c2-1 {
+	display: block;
+	margin: auto;
+}

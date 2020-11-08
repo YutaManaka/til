@@ -1,0 +1,21 @@
+body {
+	color: #222;
+	font: normal 1.1em/1.5 sans-serif;
+	margin: 80px auto;
+	width: 60%
+}
+
+/* 擬似要素を使うと */
+.intro::first-line {
+	color: royalblue;
+	font-weight: bold;
+	font-size: 32px;
+}
+
+.intro::first-letter {
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	background-color: gray;
+	font-size: 100px;
+}

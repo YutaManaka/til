@@ -1,0 +1,13 @@
+@charset "utf-8";
+body {
+	padding: 1em 6em;
+}
+
+/* text-decorationの練習  */
+p {
+	text-indent: 10em;
+}
+
+h1 {
+	text-transform: uppercase;
+}
