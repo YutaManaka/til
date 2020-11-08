@@ -1,0 +1,23 @@
+import random
+number = random.randint(1,5)
+
+if number == 1:
+    print("大陸は<b>ユーラシア</b>です。<br>")
+    print("料理は<b>ドネルケバブ</b>です。<br>")
+    print("お酒は<b>ブルガリアワイン(赤)</b>です。")
+elif number == 2:
+    print("大陸は<b>北米</b>です。<br>")
+    print("料理は<b>バッファローウイング</b>です。<br>")
+    print("お酒は<b>カリフォルニアのビール</b>です。")
+elif number == 3:
+    print("大陸は<b>南米</b>です。<br>")
+    print("料理は<b>パステル デ チョクロ</b>です。<br>")
+    print("お酒は<b>チリワイン(白)</b>です。")
+elif number == 4:
+    print("大陸は<b>アフリカ</b>です。<br>")
+    print("料理は<b>チェブジェン</b>です。<br>")
+    print("お酒は<b>南アフリカワイン(白)</b>です。")
+else:
+    print("大陸は<b>オーストラリア</b>です。<br>")
+    print("料理は<b>フィッシュ&チップス</b>です。<br>")
+    print("お酒は<b>オーストラリアワイン(白)</b>です。")
