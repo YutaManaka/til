@@ -1,0 +1,182 @@
+/* CSSのリセット（消さないでください） */
+html, body,
+ul, ol, li,
+h1, h2, h3, h4, h5, h6, p, div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Hiragino Kaku Gothic ProN W3', sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ここからCSSを書いていきましょう */
+.container {
+  width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+header {
+  height: 65px;
+  background-color: rgba(34,49,52,0.9);
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 10;
+}
+.header-left {
+  float: left;  
+}
+header img {
+  width: 124px;
+  padding-top: 20px;
+}
+.header-right {
+   float: right; 
+}
+header a {
+  background-color: rgba(255,255,255,0.3);
+  padding-left: 25px;
+  padding-right: 25px;
+  line-height: 65px;
+  color: white;
+  transition: all 0.5s;
+  display: block;
+}
+header a:hover {
+  cusor: pointer;
+  background-color: rgba(255,255,255,0.5);
+}
+
+
+.top {
+  background-image: url(https://prog-8.com/images/html/advanced/top.png);
+  background-size: cover;
+  padding-top: 180px;
+  padding-bottom: 120px;
+  color: white;
+  text-align: center;
+  
+}
+.top h1 {
+  font-size: 45px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+.top h1, .p1st, .plast{
+  opacity: 0.7;
+}
+
+.plast {
+  margin-bottom: 30px;
+}
+
+.green {
+  background-color: #239b76;
+  
+}
+.blue {
+  background-color: #3b5998;
+}
+.right-blue {
+  background-color: #55acee;
+  margin-left: 10px;
+}
+.or {
+  margin: 15px 0;
+  }
+.btn {
+  padding: 12px 24px;
+  color: white;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.btn:hover {
+  opacity: 1;
+}
+.fa {
+  padding-right: 5px;
+}
+.menu {
+  padding-top: 80px;
+  height: 500px;
+  text-align: center;
+  background-color: #f7f7f7;
+}
+.menu-title h2{
+  font-weight: normal;
+  color: #5f5d60
+}
+.menu-title {
+   margin-bottom: 50px; 
+}
+
+.lang {
+  width: 25%;
+  float: left;
+
+}
+.menu-icon {
+  position: relative;  
+}
+.lang-title {
+  position: absolute;
+  top: 90px;
+  width: 100%;
+  color: white;
+}
+.lang-content {
+  font-size: 13px;
+  color: #b3aeb5;
+  padding-top: 15px;
+  width: 80%;
+  margin: 0 auto;
+}
+.last {
+  text-align: center;
+  padding-bottom: 70px;
+}
+.last h2 {
+  padding-top: 80px;
+  color: #5f5d60;
+  font-weight: normal;
+}
+.last p {
+  padding-bottom: 50px;
+  color: #5f5d60;
+  font-size: 19px;
+}
+.last-btn {
+  background-color: #5dca88;
+  opacity: 0.8;
+  padding: 15px 40px;
+  box-shadow: 0 7px #1a7940;
+  color: white;
+}
+.last-btn:active {
+  box-shadow: none;
+  position: relative;
+  top: 7px;
+}
+footer {
+  border-top: 1px solid #eee;
+}
+footer img {
+  width: 124px;
+}
+
+footer p {
+  color: #b3aeb5;
+  font-size: 12px;
+}
+.footer-content {
+  padding: 30px 0;
+}
