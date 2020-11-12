@@ -389,3 +389,87 @@ while ($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
 }
 ?>
 </table>
+
+＃10:DBを改良しよう - 投稿者名の追加
+機能追加の手順
+1. 投稿フォームに、名前欄を追加
+2. 発言リストに、名前欄を追加
+3. データベースにuser_nameカラムを追加
+4. 名前情報を挿入するコードを追加
+
+投稿フォームに名前欄を追加
+
+<h2>投稿フォーム</h2>
+<form action="bbs.php" method="post" role="form">
+  <div class="form-group">
+    <label class="control-label">名前</label>
+    <input type="text" name="user_name" class="form-control" placeholder="名前"/>
+  </div>
+  <div class="form-group">
+    <label class="control-label">投稿内容</label>
+    <input type="text" name="content" class="form-control" placeholder="投稿内容"/>
+  </div>
+  <button type="submit" class="btn btn-primary">送信</button>
+</form>
+
+
+送信された名前情報
+// 変数の設定
+$content = $_POST["content"];
+$user_name = $_POST["user_name"];
+$delete_id = $_POST["delete_id"];
+
+
+名前情報をデータベースに挿入
+// データベースへのデータの挿入
+$sql  = "INSERT INTO bbs (content, updated_at, user_name) VALUES (:content, NOW(), :user_name);";
+$stmt = $pdo->prepare($sql);
+$stmt -> bindValue(":content", $content, PDO::PARAM_STR);
+$stmt -> bindValue(":user_name", $user_name, PDO::PARAM_STR);
+$stmt -> execute();
+
+
+発言リストに名前欄を追加
+// 取得したデータをテーブルで表示
+// echo "del_id:".$delete_id;
+?>
+<table class="table">
+    <tr>
+        <th>No.</th>
+        <!-- <th>id</th> -->
+        <th>名前</th>
+        <th>日時</th>
+        <th>投稿内容</th>
+	<th></th>
+    </tr>
+<?php
+while ($row = $stmt -> fetch(PDO::FETCH_ASSOC)) {
+    $i++;
+    if ($i % 2 == 1) {
+?>
+    <tr bgcolor="#cccccc">
+<?php
+  } else {
+?>
+    <tr>
+<?php
+  }
+?>
+    <td><?php echo "$i"; ?></td>
+    <td><?php echo "$row[user_name]" ?></td>
+    <!-- <td><?php // echo "$row[id]"; ?></td> -->
+    <td><?php echo "$row[updated_at]"; ?></td>
+    <td><?php echo "$row[content]"; ?></td>
+    <td>
+      <form action="bbs.php" method="post" role="form">
+        <button type="submit" class="btn btn-danger">削除</button>
+        <div class="form-group">
+			<input type="hidden" name="delete_id" value="<?php echo $row[id]; ?>" class="form-control"/>
+		</div>
+      </form>
+    </td>
+    </tr>
+<?php
+}
+?>
+</table>
