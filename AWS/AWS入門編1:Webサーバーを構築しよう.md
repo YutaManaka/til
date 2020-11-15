@@ -1,9 +1,10 @@
 
-＃02:AWSアカウントを作ろう
+# 02:AWSアカウントを作ろう
 AWSアカウント作成の流れ
 https://aws.amazon.com/jp/register-flow/
 
-＃03:Linux仮想マシンを起動しよう
+# 03:Linux仮想マシンを起動しよう
+
 1. コンソールにアクセス
 2. EC2を選択
 3. 東京リージョンを選択
@@ -18,12 +19,13 @@ https://aws.amazon.com/jp/register-flow/
 ・インスタンスタイプ - Amazon EC2
 　https://aws.amazon.com/jp/ec2/instance-types/
 
-＃04:パブリックIPアドレスを設定しよう
+# 04:パブリックIPアドレスを設定しよう
 ・ドメインを取得する
 　https://aws.amazon.com/jp/getting-started/get-a-domain/
 
-＃05:リモートアクセスしよう
+# 05:リモートアクセスしよう
 
+```
 $ pwd
 $ ls
 $ ls -a -l
@@ -43,6 +45,7 @@ $ (コマンド)
 
 コマンドをLinux仮想マシンで実行
 $$ (コマンド)
+```
 
 ・Linux インスタンスへの接続 - Amazon Elastic Compute Cloud
 https://docs.aws.amazon.com/ja_jp/AWSEC2/latest/UserGuide/AccessingInstances.html
@@ -64,22 +67,19 @@ https://ja.wikipedia.org/wiki/%E7%AB%AF%E6%9C%AB%E3%82%A8%E3%83%9F%E3%83%A5%E3%8
 　 [Mac OSの使い方] All About
 　http://allabout.co.jp/gm/gc/2962/
 
-＃06:Webサイトを公開しよう
-パブリックIPアドレスなど、適時自分の環境に合わせて修正してください。
+# 06:Webサイトを公開しよう
+パブリックIPアドレスなど、適時自分の環境に合わせて修正。
 
-
+```
 $ ssh -i ~/.ssh/FirstKey.pem ec2-user@(パブリックIP)
-
 
 $$ sudo yum -y update
 $$ sudo yum -y install httpd
 $$ sudo service httpd start
 $$ sudo chkconfig httpd on
 
-
 $$ ls /var/www/html
 $$ sudo vi /var/www/html/index.html
-
 
 ※記号の意味
 コマンドをローカル環境で実行
@@ -87,6 +87,7 @@ $ (コマンド)
 
 コマンドをLinux仮想マシンで実行
 $$ (コマンド)
+```
 
 ・チュートリアル
 　Amazon Linux への LAMP ウェブサーバーのインストール
@@ -99,12 +100,10 @@ escキー コマンドを入力できる状態にする
 :wq ファイルを保存して終了
 :q! ファイルを保存しないで終了
 
-＃07:ファイルを転送しよう
-ここで実行したコマンド
+# 07:ファイルを転送しよう
 
-
+```
 $ scp -i ~/.ssh/FirstKey.pem ec2-user@(パブリックIP):/var/www/html/index.html ~/Desktop
-
 
 $ scp -i ~/.ssh/FirstKey.pem ~/Desktop/index.html ec2-user@(パブリックIP):~
 $ ssh -i ~/.ssh/FirstKey.pem ec2-user@(パブリックIP)
@@ -112,10 +111,7 @@ $$ ls
 $$ sudo mv ~/index.html /var/www/html
 $$ exit
 
-
-
 $ ssh -i ~/.ssh/FirstKey.pem ec2-user@(パブリックIP)
-
 
 ##一度のscpコマンドで直接ファイルを転送できるように設定する
 $$ sudo groupadd www
@@ -130,9 +126,7 @@ $$ find /var/www -type d -exec sudo chmod 2775 {} \;
 $$ find /var/www -type f -exec sudo chmod 0664 {} \;
 $$ exit
 
-
 $ scp -i ~/.ssh/FirstKey.pem ~/Desktop/index.html ec2-user@(パブリックIP):/var/www/html
-
 
 ※記号の意味
 コマンドをローカル環境で実行
@@ -140,6 +134,7 @@ $ (コマンド)
 
 コマンドをLinux仮想マシンで実行
 $$ (コマンド)
+```
 
 ・Linuxコマンド集 - 【 scp 】 リモート・マシン間でファイルをコピーする
 　ITpro
