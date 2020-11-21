@@ -22,6 +22,16 @@ https://aws.amazon.com/jp/register-flow/
 # 04:パブリックIPアドレスを設定しよう
 ・ドメインを取得する
 　https://aws.amazon.com/jp/getting-started/get-a-domain/
+1. EC2ダッシュボード→セキュリティグループ→Elastic IP
+2. Elastic IP アドレスの割り当て
+3. この Elastic IP アドレスを関連付ける
+4. インスタンスで起動したインスタンスIDを選択. 
+5. EC2ダッシュボード→セキュリティグループ→今回作成したセキュリティグループを選択
+6. アクション→インバウンドルールを編集
+7. ルールの追加
+8. タイプでhttpを選択→ルールを保存
+
+
 
 # 05:リモートアクセスしよう
 
