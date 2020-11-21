@@ -108,12 +108,14 @@ phpの設定ファイルを編集
 :set number
 
 指定行に移動
-:520
+:461
 
 「& ~E_NOTICE」を追加
 
 error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE
 
+指定行に移動
+:478
 
 OffからOnへ
 display_errors = On
@@ -173,12 +175,11 @@ MySQLの設定
 
 ※パスワード関係でエラーコードが出た場合は下記記事参照
 https://hacknote.jp/archives/27301/
-ai)kuRH%h08a
-
 
 MySQLの文字コード設定のために、設定ファイルを開く
 ## vi /etc/my.cnf
-
+25行目に下記を挿入
+character-set-server = utf8
 
 MySQLの再起動
 ## service mysqld restart
@@ -211,6 +212,8 @@ https://www.acrovision.jp/service/aws/?p=1884
 
 phpMyAdminの設定(アクセス制限) のために、設定ファイルを開く
 ## vi /etc/httpd/conf.d/phpMyAdmin.conf
+下記を実行
+:%s/127.0.0.1/(自分のPCのIPアドレス)/g
 
 
 Apacheの再起動
