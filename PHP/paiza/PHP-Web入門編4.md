@@ -5,6 +5,7 @@
 Eloquentは、データベースのレコードをPHPのオブジェクトに割り当てる機能を持ったライブラリです。Eloquentを使うと、データベースのレコードをオブジェクトとして扱えるようになり、SQL（エスキューエル）を書かなくても、PHPのコードでデータベースが操作できます。
 
 ## Eloquentのインストール
+- composerのインストール https://qiita.com/miriwo/items/b25f9d4d74b7103f6ff6
 - 素のPHPでEloquentを使う(illuminate/databaseパッケージの単体利用)
 https://akamist.com/blog/archives/1041
 
