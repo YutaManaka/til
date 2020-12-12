@@ -399,3 +399,341 @@ esources/views/index.blade.php
     </table>
 @endsection
 ```
+
+# 08:新規投稿フォームを作ろう 
+ここでは、お店情報を登録する投稿フォームを作ります。この投稿フォームでは、プルダウンリストでカテゴリを選択できるようにします。
+
+## ルーティングを設定する
+routes/web.php
+```
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/new', 'ShopController@create')->name('shop.new');
+Route::post('/shop', 'ShopController@store')->name('shop.store');
+
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+```
+
+## コントローラのcreate()を記述する
+app/Http/Controllers/ShopController.php:
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Shop;
+use App\Category;
+use Illuminate\Http\Request;
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $shop = new Shop;
+        $categories = Category::all()->pluck('name', 'id');
+        return view('new', ['shop' => $shop, 'categories' => $categories]);
+    }
+```
+
+## 新規投稿フォームのビューを追加する
+resources/views/new.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>新しいお店</h1>
+    {{ Form::open(['route' => 'shop.store']) }}
+        <div class='form-group'>
+            {{ Form::label('name', '店名:') }}
+            {{ Form::text('name', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('address', '住所:') }}
+            {{ Form::text('address', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('category_id', 'カテゴリ:') }}
+            {{ Form::select('category_id', $categories) }}
+        </div>
+        <div class="form-group">
+            {{ Form::submit('作成する', ['class' => 'btn btn-outline-primary']) }}
+        </div>
+    {{ Form::close() }}
+
+    <div>
+        <a href={{ route('shop.list') }}>一覧に戻る</a>
+    </div>
+
+@endsection
+```
+
+# 09:投稿フォームの内容を保存しよう 
+ここでは、新規投稿フォームの内容を保存する機能を作ります。さらに、このフォームを呼び出すよう、一覧ページからリンクします。
+
+## コントローラのstore()を記述する
+app/Http/Controllers/ShopController.php:
+```
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $shop = new Shop;
+        $shop->name = request('name');
+        $shop->address = request('address');
+        $shop->category_id = request('category_id');
+        $shop->save();
+        return redirect()->route('shop.detail', ['id' => $shop->id]);
+    }
+```
+
+## 一覧ページから新規投稿フォームにリンクする
+resources/views/index.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>お店一覧</h1>
+
+    <table class='table table-striped table-hover'>
+        <tr>
+            <th>カテゴリ</th><th>店名</th><th>住所</th>
+        </tr>
+        @foreach ($shops as $shop)
+            <tr>
+                <td>{{ $shop->category->name }}</td>
+                <td>
+                    <a href={{ route('shop.detail', ['id' =>  $shop->id]) }}>
+                        {{ $shop->name }}
+                    </a>
+                </td>
+                <td>{{ $shop->address }}</td>
+            </tr>
+        @endforeach
+    </table>
+
+    <div>
+        <a href={{ route('shop.new') }} class='btn btn-outline-primary'>新しいお店</a>
+    <div>
+@endsection
+```
+
+# 10:お店の編集フォームを作ろう 
+ここでは、お店情報を編集するフォームを作ります。このフォームでは、既存のお店情報を読み込んで、変更できるようにします。
+
+## ルーティングを設定する
+routes/web.php
+```
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/new', 'ShopController@create')->name('shop.new');
+Route::post('/shop', 'ShopController@store')->name('shop.store');
+Route::get('/shop/edit/{id}', 'ShopController@edit')->name('shop.edit');
+Route::post('/shop/update/{id}', 'ShopController@update')->name('shop.update');
+
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+```
+
+## コントローラのedit()を追記
+app/Http/Controllers/ShopController.php:
+```
+    public function edit($id)
+    {
+        $shop = Shop::find($id);
+        $categories = Category::all()->pluck('name', 'id');
+        return view('edit', ['shop' => $shop, 'categories' => $categories]);
+    }
+```
+
+## editビューを作成する
+resources/views/edit.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>{{$shop->name}}を編集する</h1>
+    {{ Form::model($shop, ['route' => ['shop.update', $shop->id]]) }}
+        <div class='form-group'>
+            {{ Form::label('name', '店名:') }}
+            {{ Form::text('name', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('address', '住所:') }}
+            {{ Form::text('address', null) }}
+        </div>
+        <div class='form-group'>
+            {{ Form::label('category_id', 'カテゴリ:') }}
+            {{ Form::select('category_id', $categories) }}
+        </div>
+        <div class="form-group">
+            {{ Form::submit('更新する', ['class' => 'btn btn-outline-primary']) }}
+        </div>
+    {{ Form::close() }}
+
+    <div>
+        <a href={{ route('shop.list') }}>一覧に戻る</a>
+    </div>
+
+@endsection
+```
+
+# 11:編集内容を更新しよう 
+ここでは、編集フォームの内容を保存する機能を作ります。先ほど作成した編集フォームの内容で、データベースを更新します。
+
+## コントローラのupdate()を追記
+app/Http/Controllers/ShopController.php:
+```
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function update(Request $request, $id, Shop $shop)
+     {
+         $shop = Shop::find($id);
+         $shop->name = request('name');
+         $shop->address = request('address');
+         $shop->category_id = request('category_id');
+         $shop->save();
+         return redirect()->route('shop.detail', ['id' => $shop->id]);
+     }
+ ```
+ 
+ ## 詳細ページからリンク
+resources/views/show.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>{{ $shop->name }}</h1>
+    <div>
+        <p>{{ $shop->category->name }}</p>
+        <p>{{ $shop->address }}</p>
+    </div>
+
+    <div>
+        <a href={{ route('shop.list' )}>一覧に戻る</a>
+         | <a href={{ route('shop.edit', ['id' =>  $shop->id]) }}>編集</a>
+    </div>
+@endsection
+```
+
+# 12:お店の情報を削除しよう 
+ここでは、Lunchmapアプリの削除機能を作成します。登録したお店情報を削除できるようにしましょう。
+
+## ルーティングを設定する
+routes/web.php
+```
+Route::get('/shops', 'ShopController@index')->name('shop.list');
+Route::get('/shop/new', 'ShopController@create')->name('shop.new');
+Route::post('/shop', 'ShopController@store')->name('shop.store');
+Route::get('/shop/edit/{id}', 'ShopController@edit')->name('shop.edit');
+Route::post('/shop/update/{id}', 'ShopController@update')->name('shop.update');
+
+Route::get('/shop/{id}', 'ShopController@show')->name('shop.detail');
+Route::delete('/shop/{id}', 'ShopController@destroy')->name('shop.destroy');
+
+Route::get('/', function () {
+    return redirect('/shops');
+});
+```
+
+## コントローラにdestroyメソッドを追記
+app/Http/Controllers/ShopController.php:
+```
+    public function destroy($id)
+    {
+        $shop = Shop::find($id);
+        $shop->delete();
+        return redirect('/shops');
+    }
+```
+
+# 詳細ページに削除ボタンを追加
+resources/views/show.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>{{ $shop->name }}</h1>
+    <div>
+        <p>{{ $shop->category->name }}</p>
+        <p>{{ $shop->address }}</p>
+    </div>
+
+    <div>
+        <a href={{ route('shop.list' )}}>一覧に戻る</a>
+         | <a href={{ route('shop.edit', ['id' =>  $shop->id]) }}>編集</a>
+        <p></p>
+        {{ Form::open(['method' => 'delete', 'route' => ['shop.destroy', $shop->id]]) }}
+            {{ Form::submit('削除') }}
+        {{ Form::close() }}
+    </div>
+@endsection
+```
+
+# 13:Googleマップを表示しよう 
+ここでは、住所に合わせた地図をLunchmapアプリに表示します。そのため、詳細ページにGoogleマップを組み込みます。
+
+## APIとは
+APIとは、Application Programming Interfaceの略で、プログラムから別のプログラムの機能を呼び出すために用意された命令や関数のこと。
+
+## Google Maps API
+- Google Maps Platform - Geo-location API
+https://cloud.google.com/maps-platform/
+
+- Developer Guide | Maps Embed API | Google Developers
+https://developers.google.com/maps/documentation/embed/guide
+
+## APIキーの取得手順
+1. Google Developers Consoleにアクセスする
+Google Developers Console
+https://console.developers.google.com/
+
+2. プロジェクトを作成を選択
+3. Google APIが表示されたら、Google Maps APIから「Google Maps Embed API」を選択
+4. 「有効にする」をクリック
+5. 「認証情報を作成」をクリックして、「必要な認証情報」ボタンをクリック
+6. 表示されたAPIキーを記録する
+
+※特定のWebサービスだけから利用できるよう、「API利用制限」を設定することをオススメします。
+※この手順や利用範囲はGoogle側で変更される場合があります。
+
+## 詳細ページのビューにマップを追加
+resources/views/show.blade.php
+```
+@extends('layout')
+
+@section('content')
+    <h1>{{ $shop->name }}</h1>
+    <div>
+        <p>{{ $shop->category->name }}</p>
+        <p>{{ $shop->address }}</p>
+    </div>
+
+    <iframe id='map' src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCJBgcuCowQa5-V8owXaUCHhUNBN8bfMfU&amp;q={{ $shop->address }}'
+    width='100%'
+    height='320'
+    frameborder='0'>
+    </iframe>
+
+    <div>
+        <a href={{ route('shop.list' )}>一覧に戻る</a>
+    </div>
+@endsection
+```
+
