@@ -112,7 +112,7 @@ logPoint(color);
 //  Type '{ hex: string; }' is missing the following properties from type 'Point': x, y
 ```
 
-# The Basics
+# 1.The Basics
 ## Static type-checking
 ## Non-exception Failures
 ## Types for Tooling
