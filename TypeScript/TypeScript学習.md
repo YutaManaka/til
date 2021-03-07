@@ -1,3 +1,5 @@
+https://www.typescriptlang.org/docs/handbook/intro.html
+
 # TypeScript for JavaScript Programmers
 ## Types by Inference
 ```
