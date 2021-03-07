@@ -111,18 +111,16 @@ logPoint(color);
 //Argument of type '{ hex: string; }' is not assignable to parameter of type 'Point'.
 //  Type '{ hex: string; }' is missing the following properties from type 'Point': x, y
 ```
-## 
-```
-```
-## 
-```
-```
-## 
-```
-```
-## 
-```
-```
-## 
-```
-```
+
+# The Basics
+## Static type-checking
+## Non-exception Failures
+## Types for Tooling
+## tsc, the TypeScript compiler
+### Emitting with Errors
+## Explicit Types
+## Erased Types
+## Downleveling
+## Strictness
+### noImplicitAny
+### strictNullChecks
