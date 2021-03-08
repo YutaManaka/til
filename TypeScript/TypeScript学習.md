@@ -126,3 +126,34 @@ logPoint(color);
 ## Strictness
 ### noImplicitAny
 ### strictNullChecks
+
+# 2.Everyday Types
+## The primitives: string, number, and boolean
+## Arrays
+## any
+### noImplicitAny
+## Type Annotations on Variables
+## Functions
+### Parameter Type Annotations
+### Return Type Annotations
+### Anonymous Functions
+## Object Types
+### Optional Properties
+## Union Types
+### Defining a Union Type
+### Working with Union Types
+## Type Aliases
+## Interfaces
+### Differences Between Type Aliases and Interfaces
+## Type Assertions
+## Literal Types
+### Literal Inference
+## null and undefined
+### strictNullChecks off
+### strictNullChecks on
+### Non-null Assertion Operator (Postfix !)
+### Enums
+### Less Common Primitives
+#### bigint
+#### symbol
+
