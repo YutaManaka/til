@@ -157,3 +157,15 @@ logPoint(color);
 #### bigint
 #### symbol
 
+# 3.Narrowing
+## typeof type guards
+## Truthiness narrowing
+## Equality narrowing
+## instanceof narrowing
+## Assignments
+## Control flow analysis
+## Using type predicates
+## Discriminated unions
+## The never type
+## Exhaustiveness checking
+
