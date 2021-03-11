@@ -174,27 +174,45 @@ logPoint(color);
 ## Call Signatures
 ## Construct Signatures
 ## Generic Functions
-## Inference
-## Constraints
-## Working with Constrained Values
-## Specifying Type Arguments
-## Guidelines for Writing Good Generic Functions
+### Inference
+### Constraints
+### Working with Constrained Values
+### Specifying Type Arguments
+### Guidelines for Writing Good Generic Functions
+#### Push Type Parameters Down
+#### Use Fewer Type Parameters
+#### Type Parameters Should Appear Twice
 ## Optional Parameters
-## Optional Parameters in Callbacks
+### Optional Parameters in Callbacks
 ## Function Overloads
 ## Overload Signatures and the Implementation Signature
-## Writing Good Overloads
-## Declaring this in a Function
+### Writing Good Overloads
+### Declaring this in a Function
 ## Other Types to Know About
-## void
-## object
-## unknown
-## never
-## Function
+### void
+### object
+### unknown
+### never
+### Function
 ## Rest Parameters and Arguments
-## Rest Parameters
-## Rest Arguments
+### Rest Parameters
+### Rest Arguments
 ## Parameter Destructuring
 ## Assignability of Functions
+### Return type void
 ## Return type void
+
+# 4.Object Types
+## Property Modifiers
+### Optional Properties
+### readonly Properties
+## Extending Types
+## Intersection Types
+## Interfaces vs. Intersections
+## Generic Object Types
+### The Array Type
+### The ReadonlyArray Type
+### Tuple Types
+### readonly Tuple Types
+
 
