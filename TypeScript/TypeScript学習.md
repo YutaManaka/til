@@ -169,7 +169,7 @@ logPoint(color);
 ## The never type
 ## Exhaustiveness checking
 
-# 3.More on Functions
+# 4.More on Functions
 ## Function Type Expressions
 ## Call Signatures
 ## Construct Signatures
@@ -202,7 +202,7 @@ logPoint(color);
 ### Return type void
 ## Return type void
 
-# 4.Object Types
+# 5.Object Types
 ## Property Modifiers
 ### Optional Properties
 ### readonly Properties
@@ -215,7 +215,7 @@ logPoint(color);
 ### Tuple Types
 ### readonly Tuple Types
 
-# 5.Type Manipulation
+# 6.Type Manipulation
 ## Generics 
 - Types which take parameters
 ### Hello World of Generics
@@ -251,7 +251,7 @@ logPoint(color);
 #### Capitalize<StringType>
 #### Uncapitalize<StringType>
 
-# 6.Classes
+# 7.Classes
 ## Class Members
 ### Fields
 #### --strictPropertyInitialization
@@ -291,7 +291,7 @@ logPoint(color);
 ### Abstract Construct Signatures
 ## Relationships Between Classes
 
-# 7.Modules
+# 8.Modules
 ## How JavaScript Modules are Defined
 ## Non-modules
 ## Modules in TypeScript
