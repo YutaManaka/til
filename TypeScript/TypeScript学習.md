@@ -218,6 +218,13 @@ logPoint(color);
 # 5.Type Manipulation
 ## Generics 
 - Types which take parameters
+### Hello World of Generics
+### Working with Generic Type Variables
+### Generic Types
+### Generic Classes
+### Generic Constraints
+### Using Type Parameters in Generic Constraints
+### Using Class Types in Generics
 ## Keyof Type Operator 
 - Using the keyof operator to create new types
 ## Typeof Type Operator 
@@ -226,7 +233,75 @@ logPoint(color);
 - Using Type['a'] syntax to access a subset of a type
 ## Conditional Types 
 - Types which act like if statements in the type system
+### Conditional Type Constraints
+### Inferring Within Conditional Types
+### Distributive Conditional Types
 ## Mapped Types 
 - Creating types by mapping each property in an existing type
+#### Mapping Modifiers
+### Key Remapping via as
+#### Further Exploration
 ## Template Literal Types 
 - Mapped types which change properties via template literal strings
+#### String Unions in Types
+#### Inference with Template Literals
+### Intrinsic String Manipulation Types
+### Uppercase<StringType>
+#### Lowercase<StringType>
+#### Capitalize<StringType>
+#### Uncapitalize<StringType>
+
+# 6.Classes
+## Class Members
+### Fields
+#### --strictPropertyInitialization
+### readonly
+### Constructors
+#### Super Calls
+### Methods
+### Getters / Setters
+### Index Signatures
+## Class Heritage
+### implements Clauses
+#### Cautions
+### extends Clauses
+#### Overriding Methods
+#### Initialization Order
+#### Inheriting Built-in Types
+## Member Visibility
+### public
+### protected
+#### Exposure of protected members
+#### Cross-hierarchy protected access
+### private
+#### Cross-instance private access
+#### Caveats
+## Static Members
+### Special Static Names
+### Why No Static Classes?
+## Generic Classes
+### Type Parameters in Static Members
+## this at Runtime in Classes
+### Arrow Functions
+### this parameters
+## this Types
+## Parameter Properties
+## Class Expressions
+## abstract Classes and Members
+### Abstract Construct Signatures
+## Relationships Between Classes
+
+# 7.Modules
+## How JavaScript Modules are Defined
+## Non-modules
+## Modules in TypeScript
+### ES Module Syntax
+### Additional Import Syntax
+#### TypeScript Specific ES Module Syntax
+#### ES Module Syntax with CommonJS Behavior
+## CommonJS Syntax
+#### Exporting
+### CommonJS and ES Modules interop
+## TypeScript’s Module Resolution Options
+## TypeScript’s Module Output Options
+## TypeScript namespaces
