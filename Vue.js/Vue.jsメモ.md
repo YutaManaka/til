@@ -269,10 +269,66 @@ v-on:click="methodName"もしくは@click="methodName"
 #### v-once を使用するチープスタティックコンポーネント
 
 # 3.トランジションとアニメーション
-## 3-.概要
-## 3-.Enter & Leave トランジション
-## 3-.リストのトランジション
-## 3-.状態のトランジション
+## 3-1.概要
+- <transition>
+- <transition-group> 
+- watchers
+### クラスベースのアニメーションとトランジション
+### パフォーマンス
+#### 変形と不透明度
+- transform
+#### ハードウェアアクセラレーション
+- perspective
+- backface-visibility
+- transform：translateZ（x）
+### タイミング
+### イージング
+- ease-in
+- ease-out
+
+## 3-2.Enter & Leave トランジション
+### 単一要素/コンポーネントのトランジション
+#### トランジションクラス
+- v-enter-from
+- v-enter-active
+- v-enter-to
+- v-leave-from
+- v-leave-active
+- v-leave-to
+#### CSS トランジション
+#### CSS アニメーション
+#### カスタムトランジションクラス
+- enter-from-class
+- enter-active-class
+- enter-to-class (2.1.8+)
+- leave-from-class
+- leave-active-class
+- leave-to-class (2.1.8+)
+#### トランジションとアニメーションの併用
+#### 明示的なトランジション期間の設定
+- duration
+#### JavaScript フック
+### 初期描画時のトランジション
+- appear
+### 要素間のトランジション
+#### トランジションモード
+- in-out
+- out-in
+### コンポーネント間のトランジション
+
+## 3-3.リストのトランジション
+- <transition-group>
+- tag
+- v-move
+- move-class
+### 再利用可能なトランジション
+### 動的なトランジション
+
+## 3-4.状態のトランジション
+### ウォッチャによる状態のアニメーション
+### 動的な状態のトランジション
+### コンポーネント内のトランジションの整理
+### デザインに命を吹き込む
 
 # 4.再利用と構成
 ## 4-.ミックスイン
