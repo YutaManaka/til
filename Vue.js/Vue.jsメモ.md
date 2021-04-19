@@ -331,11 +331,114 @@ v-on:click="methodName"もしくは@click="methodName"
 ### デザインに命を吹き込む
 
 # 4.再利用と構成
-## 4-.ミックスイン
-## 4-.カスタムディレクティブ
-## 4-.Teleport
-## 4-.Render 関数
-## 4-.プラグイン
+## 4-1.Composition API
+### はじめに
+#### なぜコンポジション API なのか？
+#### コンポジション API の基本
+- setup
+##### setup コンポーネントオプション
+##### ref によるリアクティブな変数
+- ref
+##### ライフサイクルフックを setup の中に登録する
+- on
+- onMounted
+##### watch で変化に反応する
+- toRefs
+- watch
+##### スタンドアロンな computed プロパティ
+### セットアップ
+#### 引数
+- props
+- context
+##### プロパティ
+- toRefs
+##### コンテキスト
+- .attrs
+- .slots
+- .emit
+#### コンポーネントプロパティへのアクセス
+#### テンプレートでの使用
+#### 描画関数での使用
+#### this の使用
+### ライフサイクルフック
+- beforeCreate
+- created
+- onBeforeMount
+- onMounted
+- onBeforeUpdate
+- onUpdated
+- onBeforeUnmount
+- onUnmounted
+- onErrorCaptured
+- onRenderTracked
+- onRenderTriggered
+### Provide / Inject
+#### シナリオの背景
+#### Provide の使い方
+#### Inject の使い方
+#### リアクティブ
+##### リアクティブの追加
+##### リアクティブプロパティの変更
+- readonly
+### テンプレート参照
+
+## 4-2.ミックスイン
+- mixin
+### 基本
+### オプションのマージ
+### グローバルミックスイン
+### カスタムオプションのマージストラテジ
+- app.config.optionMergeStrategies
+
+## 4-3.カスタムディレクティブ
+### 基本
+### フック関数
+- beforeMount
+- mounted
+- beforeUpdate
+- updated
+- beforeUnmount
+- unmounted
+#### 動的なディレクティブ引数
+### 関数による省略記法
+### オブジェクトリテラル
+### コンポーネントにおける使用法
+
+## 4-4.Teleport
+### Vue コンポーネントと使う
+### 複数の teleport のターゲットを同じにして使う
+
+## 4-5.Render 関数
+- render()
+### DOM ツリー
+### 仮想 DOM ツリー
+### h() の引数
+### 完全な例
+### 制約
+#### Node は一意でなければならない
+### テンプレートの機能をプレーンな JavaScript で置き換える
+#### v-if と v-for
+#### v-model
+#### v-on
+- .passive
+- .capture
+- .once
+- .stop
+- .prevent
+- .self
+- .enter
+- .ctrl
+- .alt
+- .shift
+- .meta
+#### スロット
+### JSX
+### テンプレートのコンパイル
+
+## 4-6.プラグイン
+### プラグインを書く
+### プラグインを使う
+- use
 
 # 5.高度な使い方
 ## 5-.リアクティビティ 
