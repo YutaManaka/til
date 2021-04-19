@@ -1,10 +1,126 @@
+https://laravel.com/docs/8.x/installation
+
 # 1.Prologue
 ## 1-1.Getting Started
+
 ## 1-2.Installation
+### Meet Laravel
+#### Why Laravel?
+### Your First Laravel Project
+#### Getting Started On macOS
+#### Getting Started On Windows
+#### Getting Started On Linux
+#### Choosing Your Sail Services
+#### Installation Via Composer
+### Initial Configuration
+#### Environment Based Configuration
+#### Directory Configuration
+### Next Steps
+#### Laravel The Full Stack Framework
+#### Laravel The API Backend
+
 ## 1-3.Configuration
+### Introduction
+### Environment Configuration
+#### Environment Variable Types
+#### Retrieving Environment Configuration
+#### Determining The Current Environment
+### Accessing Configuration Values
+### Configuration Caching
+- php artisan config:cache
+### Debug Mode
+### Maintenance Mode
+- php artisan down
+- php artisan up
+
 ## 1-4.Directory Structure
+### Introduction
+### The Root Directory
+#### The app Directory
+#### The bootstrap Directory
+- app.php
+#### The config Directory
+#### The database Directory
+#### The public Directory
+- index.php
+- images
+- JavaScript
+- CSS
+#### The resources Directory
+- views
+- JavaScript
+- CSS
+#### The routes Directory
+- web.php
+- api.php
+- console.php
+- channels.php
+#### The storage Directory
+#### The tests Directory
+- phpunit
+- php vendor/bin/phpunit
+- php artisan test
+#### The vendor Directory
+- Composer
+### The App Directory
+#### The Broadcasting Directory
+- make:channel
+#### The Console Directory
+- make:command
+#### The Events Directory
+- event:generate
+- make:event
+#### The Exceptions Directory
+#### The Http Directory
+#### The Jobs Directory
+- make:job
+#### The Listeners Directory
+- event:generate
+- make:listener
+#### The Mail Directory
+- make:mail
+- Mail::send 
+#### The Models Directory
+- Eloquent model classes
+#### The Notifications Directory
+- make:notification
+#### The Policies Directory
+- make:policy
+#### The Providers Directory
+#### The Rules Directory
+- make:rule
+
 ## 1-5.Starter Kits
+### Introduction
+### Laravel Breeze
+- simple authentication features
+#### Installation
+### Laravel Jetstream
+- login
+- registration
+- email verification
+- two-factor authentication
+- session management
+- API support via Laravel Sanctum
+- optional team management
+
 ## 1-6.Deployment
+### Introduction
+### Server Requirements
+### Server Configuration
+#### Nginx
+### Optimization
+#### Autoloader Optimization
+#### Optimizing Configuration Loading
+- php artisan config:cache
+#### Optimizing Route Loading
+- php artisan route:cache
+#### Optimizing View Loading
+- php artisan view:cache
+### Debug Mode
+### Deploying With Forge / Vapor
+- Laravel Forge
+- Laravel Vapor(serverless deployment platform)
 
 # 2.Architecture Concepts
 ## 2-1.Request Lifecycle
