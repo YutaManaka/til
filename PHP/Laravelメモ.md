@@ -124,15 +124,163 @@ https://laravel.com/docs/8.x/installation
 
 # 2.Architecture Concepts
 ## 2-1.Request Lifecycle
+### Introduction
+### Lifecycle Overview
+#### First Steps
+- public/index.php
+- bootstrap/app.php
+#### HTTP / Console Kernels
+- app/Http/Kernel.php
+#### Service Providers
+- config/app.php
+#### Routing
+- App\Providers\RouteServiceProvider
+#### Finishing Up
+### Focus On Service Providers
+- app/Providers
+
 ## 2-2.Service Container
+### Introduction
+#### Zero Configuration Resolution
+#### When To Use The Container
+### Binding
+#### Binding Basics
+- $this->app->bind
+- App::bind
+- $this->app->singleton
+- $this->app->instance
+#### Binding Interfaces To Implementations
+#### Contextual Binding
+#### Binding Primitives
+#### Binding Typed Variadics
+#### Tagging
+- $this->app->tag
+#### Extending Bindings
+- $this->app->extend
+### Resolving
+#### The Make Method
+- $this->app->make
+- $this->app->makeWith
+- App::make
+#### Automatic Injection
+### Container Events
+- $this->app->resolving
+### PSR-11
+
 ## 2-3.Service Providers
+### Introduction
+### Writing Service Providers
+- php artisan make:provider
+#### The Register Method
+#### The Boot Method
+### Registering Providers
+### Deferred Providers
+
 ## 2-4.Facades
+### Introduction
+- view
+- response
+- url
+- config
+### When To Use Facades
+#### Facades Vs. Dependency Injection
+#### Facades Vs. Helper Functions
+### How Facades Work
+### Real-Time Facades
+### Facade Class Reference
 
 # 3.The Basics
 ## 3-1.Routing
+### Basic Routing
+- Route::get
+- routes/web.php
+- Route::get($uri, $callback);
+- Route::post($uri, $callback);
+- Route::put($uri, $callback);
+- Route::patch($uri, $callback);
+- Route::delete($uri, $callback);
+- Route::options($uri, $callback);
+- Route::match
+#### Redirect Routes
+- Route::redirect('/here', '/there');
+- Route::permanentRedirect('/here', '/there');
+#### View Routes
+- Route::view('/welcome', 'welcome');
+- Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+### Route Parameters
+#### Required Parameters
+#### Optional Parameters
+#### Regular Expression Constraints
+### Named Routes
+### Route Groups
+#### Middleware
+- Route::middleware
+#### Subdomain Routing
+- Route::domain
+#### Route Prefixes
+- Route::prefix
+#### Route Name Prefixes
+- Route::name
+### Route Model Binding
+#### Implicit Binding
+#### Explicit Binding
+### Fallback Routes
+- Route::fallback
+### Rate Limiting
+- RateLimiter::for
+#### Defining Rate Limiters
+#### Attaching Rate Limiters To Routes
+### Form Method Spoofing
+### Accessing The Current Route
+### Cross-Origin Resource Sharing (CORS)
+### Route Caching
+- php artisan route:cache
+- php artisan route:clear
+
 ## 3-2.Middleware
+### Introduction
+### Defining Middleware
+- php artisan make:middleware 
+### Registering Middleware
+#### Global Middleware
+- app/Http/Kernel.php 
+#### Assigning Middleware To Routes
+#### Middleware Groups
+#### Sorting Middleware
+### Middleware Parameters
+### Terminable Middleware
+
 ## 3-3.CSRF Protection
+### Introduction
+### Preventing CSRF Requests
+#### Excluding URIs
+### X-CSRF-Token
+### X-XSRF-Token
+
 ## 3-4.Controllers
+### Introduction
+### ### Writing Controllers
+#### Basic Controllers
+#### Single Action Controllers
+- public function __invoke()
+- php artisan make:controller ProvisionServer --invokable
+### Controller Middleware
+- $this->middleware
+### Resource Controllers
+- php artisan make:controller PhotoController --resource
+- Route::resource
+- php artisan make:controller PhotoController --resource --model=Photo
+#### Partial Resource Routes
+- Route::apiResource
+- php artisan make:controller PhotoController --api
+#### Nested Resources
+#### Naming Resource Routes
+#### Naming Resource Route Parameters
+#### Scoping Resource Routes
+#### Localizing Resource URIs
+#### Supplementing Resource Controllers
+### Dependency Injection & Controllers
+
 ## 3-5.Requests
 ## 3-6.Responses
 ## 3-7.Views
