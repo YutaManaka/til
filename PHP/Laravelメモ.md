@@ -282,20 +282,750 @@ https://laravel.com/docs/8.x/installation
 ### Dependency Injection & Controllers
 
 ## 3-5.Requests
+### Introduction
+### Interacting With The Request
+#### Accessing The Request
+#### Request Path & Method
+- $uri = $request->path();
+#### Request Headers
+- $value = $request->header('X-Header-Name');
+#### Request IP Address
+- $ipAddress = $request->ip();
+#### Content Negotiation
+- $contentTypes = $request->getAcceptableContentTypes();
+- if ($request->accepts(['text/html', 'application/json'])) {
+    // ...
+}
+- $preferred = $request->prefers(['text/html', 'application/json']);
+- if ($request->expectsJson()) {
+    // ...
+}
+#### PSR-7 Requests
+- composer require symfony/psr-http-message-bridge
+- composer require nyholm/psr7
+### Input
+#### Retrieving Input
+- $input = $request->all();
+- $input = $request->input();
+- $query = $request->query();
+#### Determining If Input Is Present
+#### Old Input
+- $request->flash();
+- $request->flashOnly
+- $request->flashExcept
+- return redirect('form')->withInput();
+- $username = $request->old('username');
+#### Cookies
+- $value = $request->cookie('name');
+#### Input Trimming & Normalization
+### Files
+#### Retrieving Uploaded Files
+- $file = $request->file('photo');
+- $file = $request->photo;
+- if ($request->hasFile('photo'))
+- if ($request->file('photo')->isValid())
+- $path = $request->photo->path();
+- $extension = $request->photo->extension();
+#### Storing Uploaded Files
+- $path = $request->photo->store('images');
+- $path = $request->photo->storeAs('images', 'filename.jpg');
+### Configuring Trusted Proxies
+### Configuring Trusted Hosts
+
 ## 3-6.Responses
+### Creating Responses
+#### Attaching Headers To Responses
+#### Attaching Cookies To Responses
+#### Cookies & Encryption
+### Redirects
+#### Redirecting To Named Routes
+#### Redirecting To Controller Actions
+#### Redirecting To External Domains
+#### Redirecting With Flashed Session Data
+### Other Response Types
+#### View Responses
+- return response()->view
+#### JSON Responses
+- return response()->json
+#### File Downloads
+- return response()->download
+- return response()->streamDownload
+#### File Responses
+- return response()->file
+### Response Macros
+
 ## 3-7.Views
+### Introduction
+- resources/views/greeting.blade.php
+### Creating & Rendering Views
+- return View::make
+#### Nested View Directories
+#### Creating The First Available View
+- return View::first
+#### Determining If A View Exists
+- View::exists
+### Passing Data To Views
+- return view
+#### Sharing Data With All Views
+### View Composers
+- View::composer
+#### View Creators
+- View::creator
+### Optimizing Views
+- php artisan view:cache
+- php artisan view:clear
+
 ## 3-8.Blade Templates
+### Introduction
+### Displaying Data
+- var app = @json($array);
+- {{ }}
+#### HTML Entity Encoding
+- escape
+- {!! $name !!}
+#### Blade & JavaScript Frameworks
+- @@json()
+### Blade Directives
+#### If Statements
+- @if
+- @elseif
+- @else
+- @endif
+- @unless 
+- @endunless
+- @isset
+- @endisset
+- @empty
+- @endempty
+- @auth
+- @endauth
+- @guest
+- @endguest
+- @production
+- @endproduction
+- @env
+- @endenv
+- @hasSection
+- @endif
+- @sectionMissing
+- @endif
+#### Switch Statements
+- @switch
+- @case
+- @break
+- @default
+- @endswitch 
+#### Loops
+- @for
+- @endfor
+- @foreach 
+- @endforeach
+- @empty
+- @endforelse
+- @while
+- @endwhile
+- @continue
+- @break
+#### The Loop Variable
+#### Comments
+- {{-- comment --}}
+#### Including Subviews
+- @include
+- @includeIf
+- @includeWhen
+- @includeUnless
+- @includeFirst
+- @each
+#### The @once Directive
+- @once
+#### Raw PHP
+- @php
+- @endphp
+### Components
+- php artisan make:component
+#### Rendering Components
+#### Passing Data To Components
+#### Component Attributes
+- {{ $attributes }}
+#### Reserved Keywords
+- data
+- render
+- resolveView
+- shouldRender
+- view
+- withAttributes
+- withName
+#### Slots
+- {{ $slot }}
+#### Inline Component Views
+- php artisan make:component Alert --inline
+#### Anonymous Components
+- @props
+#### Dynamic Components
+#### Manually Registering Components
+### Building Layouts
+#### Layouts Using Components
+#### Layouts Using Template Inheritance
+- @show
+- @section
+- @endsection
+- @yield
+- @extends
+- @parent
+### Forms
+#### CSRF Field
+- @csrf
+#### Method Field
+- @method
+#### Validation Errors
+- @error
+- @enderror
+### Stacks
+- @push
+- @endpush
+- @prepend
+- @endprepend
+### Service Injection
+- @inject
+### Extending Blade
+#### Custom If Statements
+- Blade::if
+
 ## 3-9.URL Generation
+### Introduction
+### The Basics
+#### Generating URLs
+- echo url
+#### Accessing The Current URL
+- echo url()->current();
+- echo URL::current();
+- echo url()->full();
+- echo url()->previous();
+### URLs For Named Routes
+#### Signed URLs
+- return URL::signedRoute
+- return URL::temporarySignedRoute
+- hasValidSignature
+### URLs For Controller Actions
+### Default Values
+
 ## 3-10.Session
+### Introduction
+#### Configuration
+- config/session.php
+- file
+- cookie
+- database
+- memcached / redis
+- dynamodb
+- array
+#### Driver Prerequisites
+- Database
+- Schema::create
+- php artisan session:table
+- php artisan migrate
+### Interacting With The Session
+#### Retrieving Data
+- $data = $request->session()->all();
+#### Storing Data
+- $request->session()->put('key', 'value');
+- session(['key' => 'value']);
+- $request->session()->push
+- $value = $request->session()->pull
+- $request->session()->increment
+- $request->session()->decrement
+#### Flash Data
+- $request->session()->flash
+- $request->session()->reflash();
+- $request->session()->keep
+- $request->session()->now
+#### Deleting Data
+- $request->session()->forget
+- $request->session()->flush();
+#### Regenerating The Session ID
+- $request->session()->regenerate();
+- $request->session()->invalidate();
+### Session Blocking
+- block
+### Adding Custom Session Drivers
+#### Implementing The Driver
+- open
+- close
+- read
+- write
+- destroy
+- gc
+#### Registering The Driver
+
 ## 3-11.Validation
+### Introduction
+### Validation Quickstart
+#### Defining The Routes
+#### Creating The Controller
+#### Writing The Validation Logic
+#### Displaying The Validation Error
+- @error
+- @enderror
+#### Repopulating Forms
+#### A Note On Optional Fields
+### Form Request Validation
+#### Creating Form Requests
+- php artisan make:request StorePostRequest
+- $stopOnFirstFailure
+#### Authorizing Form Requests
+#### Customizing The Error Messages
+#### Preparing Input For Validation
+### Manually Creating Validators
+- $validator = Validator::make
+- $validator->stopOnFirstFailure()->fails()
+#### Automatic Redirection
+- validateWithBag
+#### Named Error Bags
+- withErrors
+#### Customizing The Error Messages
+#### After Validation Hook
+- $validator->after
+### Working With Error Messages
+- $errors = $validator->errors();
+- echo $errors->first('email');
+- foreach ($errors->get('email') as $message)
+- foreach ($errors->all() as $message)
+#### Specifying Custom Messages In Language Files
+#### Specifying Attributes In Language Files
+#### Specifying Values In Language Files
+### Available Validation Rules
+Accepted
+Active URL
+After (Date)
+After Or Equal (Date)
+Alpha
+Alpha Dash
+Alpha Numeric
+Array
+Bail
+Before (Date)
+Before Or Equal (Date)
+Between
+Boolean
+Confirmed
+Date
+Date Equals
+Date Format
+Different
+Digits
+Digits Between
+Dimensions (Image Files)
+Distinct
+Email
+Ends With
+Exclude If
+Exclude Unless
+Exists (Database)
+File
+Filled
+Greater Than
+Greater Than Or Equal
+Image (File)
+In
+In Array
+Integer
+IP Address
+JSON
+Less Than
+Less Than Or Equal
+Max
+MIME Types
+MIME Type By File Extension
+Min
+Multiple Of
+Not In
+Not Regex
+Nullable
+Numeric
+Password
+Present
+Prohibited
+Prohibited If
+Prohibited Unless
+Regular Expression
+Required
+Required If
+Required Unless
+Required With
+Required With All
+Required Without
+Required Without All
+Same
+Size
+Sometimes
+Starts With
+String
+Timezone
+Unique (Database)
+URL
+UUID
+### Conditionally Adding Rules
+### Validating Arrays
+### Custom Validation Rules
+#### Using Rule Objects
+- php artisan make:rule Uppercase
+#### Using Closures
+#### Implicit Rules
+
 ## 3-12.Error Handling
+### Introduction
+### Configuration
+### The Exception Handler
+#### Reporting Exceptions
+- $this->reportable(
+#### Ignoring Exceptions By Type
+#### Rendering Exceptions
+#### Reportable & Renderable Exceptions
+### HTTP Exceptions
+- abort(404);
+#### Custom HTTP Error Pages
+
 ## 3-13.Logging
+### Introduction
+### Configuration
+#### Available Channel Drivers
+#### Channel Prerequisites
+### Building Log Stacks
+### Writing Log Messages
+- Log::emergency($message);
+- Log::alert($message);
+- Log::critical($message);
+- Log::error($message);
+- Log::warning($message);
+- Log::notice($message);
+- Log::info($message);
+- Log::debug($message);
+#### Writing To Specific Channels
+### Monolog Channel Customization
+#### Customizing Monolog For Channels
+#### Creating Monolog Handler Channels
+#### Creating Custom Channels Via Factories
 
 # 4.Digging Deeper
 ## 4-1.Artisan Console
+### Introduction
+#### Tinker (REPL)
+- tinker.php
+- 'commands' =>
+- 'dont_alias' =>
+### Writing Commands
+#### Generating Commands
+- php artisan make:command 
+#### Command Structure
+#### Closure Commands
+### Defining Input Expectations
+#### Arguments
+#### Options
+- two hyphens (--) 
+#### Input Arrays
+-  * character
+#### Input Descriptions
+### Command I/O
+#### Retrieving Input
+#### Prompting For Input
+- $this->ask
+- $this->secret
+- $this->confirm
+- $this->anticipate
+- $this->choice
+#### Writing Output
+- $this->info
+- $this->error
+- $this->line
+- $this->newLine();
+- $this->table
+- $this->withProgressBar
+### Registering Commands
+- $this->load
+### Programmatically Executing Commands
+- Artisan::call
+- Artisan::queue
+#### Calling Commands From Other Commands
+- $this->call
+- $this->callSilently
+### Signal Handling
+### Stub Customization
+- php artisan stub:publish
+### Events
+
 ## 4-2.Broadcasting
+### Introduction
+### Server Side Installation
+#### Configuration
+- config/broadcasting.php 
+#### Pusher Channels
+- composer require pusher/pusher-php-server "^5.0"
+- config/broadcasting.php
+  - PUSHER_APP_ID=your-pusher-app-id
+  - PUSHER_APP_KEY=your-pusher-key
+  - PUSHER_APP_SECRET=your-pusher-secret
+  - PUSHER_APP_CLUSTER=mt1
+- .env
+  - BROADCAST_DRIVER=pusher
+#### Ably
+- composer require ably/ably-php
+- config/broadcasting.php
+  - ABLY_KEY=your-ably-key
+- .env
+  - BROADCAST_DRIVER=ably
+#### Open Source Alternatives
+### Client Side Installation
+#### Pusher Channels
+- npm install --save-dev laravel-echo pusher-js
+- npm run dev
+#### Ably
+- npm install --save-dev laravel-echo pusher-js
+- npm run dev
+### Concept Overview
+#### Using An Example Application
+### Defining Broadcast Events
+#### Broadcast Name
+#### Broadcast Data
+#### Broadcast Queue
+#### Broadcast Conditions
+#### Broadcasting & Database Transactions
+### Authorizing Channels
+#### Defining Authorization Routes
+- Broadcast::routes();
+#### Defining Authorization Callbacks
+#### Defining Channel Classes
+- php artisan make:channel
+### Broadcasting Events
+#### Only To Others
+### Receiving Broadcasts
+#### Listening For Events
+- Echo.channel
+- .listen
+#### Leaving A Channel
+- Echo.leaveChannel
+- Echo.leave
+#### Namespaces
+### Presence Channels
+#### Authorizing Presence Channels
+#### Joining Presence Channels
+-.join
+.here
+.joining
+#### Broadcasting To Presence Channels
+- broadcastOn
+### Client Events
+- .whisper
+- .listenForWhisper
+### Notifications
+- .notification
+
 ## 4-3.Cache
+### Introduction
+### Configuration
+- config/cache.php
+#### Driver Prerequisites
+### Cache Usage
+#### Obtaining A Cache Instance
+- Cache::store
+#### Retrieving Items From The Cache
+- Cache::get
+- Cache::has
+- Cache::increment
+- Cache::decrement
+- Cache::remember
+- Cache::rememberForever
+- Cache::pull
+#### Storing Items In The Cache
+- Cache::put
+- Cache::add
+- Cache::forever
+#### Removing Items From The Cache
+- Cache::forget
+- ache::put
+- Cache::flush
+#### The Cache Helper
+### Cache Tags
+#### Storing Tagged Cache Items
+- Cache::tags()->put();
+#### Accessing Tagged Cache Items
+- Cache::tags()->get();
+#### Removing Tagged Cache Items
+- Cache::tags()->flush();
+### Atomic Locks
+#### Driver Prerequisites
+#### Managing Locks
+- Cache::lock
+#### Managing Locks Across Processes
+### Adding Custom Cache Drivers
+#### Writing The Driver
+- Cache::extend
+#### Registering The Driver
+### Events
+
 ## 4-4.Collections
+### Introduction
+#### Creating Collections
+#### Extending Collections
+- Collection::macro
+### Available Methods
+all
+average
+avg
+chunk
+chunkWhile
+collapse
+collect
+combine
+concat
+contains
+containsStrict
+count
+countBy
+crossJoin
+dd
+diff
+diffAssoc
+diffKeys
+dump
+duplicates
+duplicatesStrict
+each
+eachSpread
+every
+except
+filter
+first
+firstWhere
+flatMap
+flatten
+flip
+forget
+forPage
+get
+groupBy
+has
+implode
+intersect
+intersectByKeys
+isEmpty
+isNotEmpty
+join
+keyBy
+keys
+last
+macro
+make
+map
+mapInto
+mapSpread
+mapToGroups
+mapWithKeys
+max
+median
+merge
+mergeRecursive
+min
+mode
+nth
+only
+pad
+partition
+pipe
+pipeInto
+pluck
+pop
+prepend
+pull
+push
+put
+random
+reduce
+reject
+replace
+replaceRecursive
+reverse
+search
+shift
+shuffle
+skip
+skipUntil
+skipWhile
+slice
+some
+sort
+sortBy
+sortByDesc
+sortDesc
+sortKeys
+sortKeysDesc
+splice
+split
+splitIn
+sum
+take
+takeUntil
+takeWhile
+tap
+times
+toArray
+toJson
+transform
+union
+unique
+uniqueStrict
+unless
+unlessEmpty
+unlessNotEmpty
+unwrap
+values
+when
+whenEmpty
+whenNotEmpty
+where
+whereStrict
+whereBetween
+whereIn
+whereInStrict
+whereInstanceOf
+whereNotBetween
+whereNotIn
+whereNotInStrict
+whereNotNull
+whereNull
+wrap
+zip
+### Higher Order Messages
+average
+avg
+contains
+each
+every
+filter
+first
+flatMap
+groupBy
+keyBy
+map
+max
+min
+partition
+reject
+skipUntil
+skipWhile
+some
+sortBy
+sortByDesc
+sum
+takeUntil
+takeWhile
+unique
+### Lazy Collections
+#### Introduction
+#### Creating Lazy Collections
+#### The Enumerable Contract
+#### Lazy Collection Methods
+- LazyCollection::make
+
 ## 4-5.Compiling Assets
 ## 4-6.Contracts
 ## 4-7.Events
