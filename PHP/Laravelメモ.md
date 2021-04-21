@@ -1027,9 +1027,151 @@ unique
 - LazyCollection::make
 
 ## 4-5.Compiling Assets
+### Introduction
+### Installation & Setup
+### Running Mix
+- npm run dev
+- npm run prod
+- npm run watch
+- npm run watch-poll
+### Working With Stylesheets
+#### Tailwind CSS
+#### PostCSS
+#### Sass
+#### URL Processing
+- url()
+#### Source Maps
+- mix.sourceMaps()
+### Working With JavaScript
+#### Vue
+#### React
+#### Vendor Extraction
+- .extract
+#### Custom Webpack Configuration
+- mix.webpackConfig
+### Versioning / Cache Busting
+- .version
+- mix.inProduction
+- mix_url
+### Browsersync Reloading
+- mix.browserSync()
+### Environment Variables
+- .env
+    - MIX_SENTRY_DSN_PUBLIC=http://example.com
+    - process.env.MIX_SENTRY_DSN_PUBLIC
+### Notifications
+- mix.disableNotifications();
+
 ## 4-6.Contracts
+### Introduction
+#### Contracts Vs. Facades
+### When To Use Contracts
+### How To Use Contracts
+### Contract Reference
+
 ## 4-7.Events
+### Introduction
+### Registering Events & Listeners
+#### Generating Events & Listeners
+- php artisan event:generate
+- php artisan make:event
+#### Manually Registering Events
+- queueable
+- onConnection
+- onQueue
+- delay
+- catch
+- Throwable
+- 'event.*'
+#### Event Discovery
+- handle
+- discoverEventsWithin()
+- event:cache
+- event:clear
+### Defining Events
+### Defining Listeners
+### Queued Event Listeners
+- event:generate
+- make:listener
+- $connection
+- $queue
+- $delay
+- viaQueue()
+- shouldQueue
+#### Manually Interacting With The Queue
+- delete
+- release
+#### Queued Event Listeners & Database Transactions
+#### Handling Failed Jobs
+- $tries 
+- retryUntil()
+### Dispatching Events
+- dispatch
+### Event Subscribers
+- subscribe
+#### Writing Event Subscribers
+#### Registering Event Subscribers
+
 ## 4-8.File Storage
+### Introduction
+### Configuration
+#### The Local Driver
+- storage/app/example.txt
+#### The Public Disk
+- php artisan storage:link
+- echo asset
+#### Driver Prerequisites
+- config/filesystems.php
+#### Caching
+### Obtaining Disk Instances
+- Storage::put
+- Storage::disk
+### Retrieving Files
+- Storage::get
+- Storage::disk('s3')->exists
+- Storage::disk('s3')->missing(
+#### Downloading Files
+- Storage::download
+#### File URLs
+- Storage::url
+- Storage::temporaryUrl
+#### File Metadata
+- Storage::size
+- Storage::lastModified
+- Storage::path
+### Storing Files
+- Storage::put
+- Storage::putFile
+- Storage::putFileAs
+- Storage::prepend
+- Storage::append
+- Storage::copy
+- Storage::move
+#### File Uploads
+- Storage::putFile
+- storeAs
+- Storage::putFileAs
+- store
+- storeAs
+- getClientOriginalName()
+#### File Visibility
+- Storage::getVisibility
+- Storage::setVisibility
+- storePublicly
+- storePubliclyAs
+### Deleting Files
+- Storage::delete
+- Storage::disk('s3')->delete
+### Directories
+- Storage::files
+- Storage::allFiles
+- Storage::directories
+- Storage::allDirectories
+- Storage::makeDirectory
+- Storage::deleteDirectory
+### Custom Filesystems
+- composer require spatie/flysystem-dropbox
+
 ## 4-9.Helpers
 ## 4-10.HTTP Client
 ## 4-11.Localization
