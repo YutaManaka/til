@@ -1173,13 +1173,680 @@ unique
 - composer require spatie/flysystem-dropbox
 
 ## 4-9.Helpers
+### Available Methods
+#### Arrays & Objects
+Arr::accessible
+Arr::add
+Arr::collapse
+Arr::crossJoin
+Arr::divide
+Arr::dot
+Arr::except
+Arr::exists
+Arr::first
+Arr::flatten
+Arr::forget#### Paths
+Arr::get
+Arr::has
+Arr::hasAny
+Arr::isAssoc
+Arr::last
+Arr::only
+Arr::pluck
+Arr::prepend
+Arr::pull
+Arr::query
+Arr::random
+Arr::set
+Arr::shuffle
+Arr::sort
+Arr::sortRecursive
+Arr::where
+Arr::wrap
+data_fill
+data_get
+data_set
+head
+last
+#### Paths
+app_path
+base_path
+config_path
+database_path
+mix
+public_path
+resource_path
+storage_path
+#### Strings
+__
+class_basename
+e
+preg_replace_array
+Str::after
+Str::afterLast
+Str::ascii
+Str::before
+Str::beforeLast
+Str::between
+Str::camel
+Str::contains
+Str::containsAll
+Str::endsWith
+Str::finish
+Str::is
+Str::isAscii
+Str::isUuid
+Str::kebab
+Str::length
+Str::limit
+Str::lower
+Str::markdown
+Str::orderedUuid
+Str::padBoth
+Str::padLeft
+Str::padRight
+Str::plural
+Str::pluralStudly
+Str::random
+Str::remove
+Str::replaceArray
+Str::replaceFirst
+Str::replaceLast
+Str::singular
+Str::slug
+Str::snake
+Str::start
+Str::startsWith
+Str::studly
+Str::substr
+Str::substrCount
+Str::title
+Str::ucfirst
+Str::upper
+Str::uuid
+Str::words
+trans
+trans_choice
+#### Fluent Strings
+after
+afterLast
+append
+ascii
+basename
+before
+beforeLast
+camel
+contains
+containsAll
+dirname
+endsWith
+exactly
+explode
+finish
+is
+isAscii
+isEmpty
+isNotEmpty
+kebab
+length
+limit
+lower
+ltrim
+markdown
+match
+matchAll
+padBoth
+padLeft
+padRight
+pipe
+plural
+prepend
+remove
+replace
+replaceArray
+replaceFirst
+replaceLast
+replaceMatches
+rtrim
+singular
+slug
+snake
+split
+start
+startsWith
+studly
+substr
+tap
+test
+title
+trim
+ucfirst
+upper
+when
+whenEmpty
+words
+#### URLs
+action
+asset
+route
+secure_asset
+secure_url
+url
+#### Miscellaneous
+abort
+abort_if
+abort_unless
+app
+auth
+back
+bcrypt
+blank
+broadcast
+cache
+class_uses_recursive
+collect
+config
+cookie
+csrf_field
+csrf_token
+dd
+dispatch
+dump
+env
+event
+filled
+info
+logger
+method_field
+now
+old
+optional
+policy
+redirect
+report
+request
+rescue
+resolve
+response
+retry
+session
+tap
+throw_if
+throw_unless
+today
+trait_uses_recursive
+transform
+validator
+value
+view
+with
+
 ## 4-10.HTTP Client
+### Introduction
+### Making Requests
+- Http::get
+- $response->body() : string;
+- $response->json() : array|mixed;
+- $response->collect() : Illuminate\Support\Collection;
+- $response->status() : int;
+- $response->ok() : bool;
+- $response->successful() : bool;
+- $response->failed() : bool;
+- $response->serverError() : bool;
+- $response->clientError() : bool;
+- $response->header($header) : string;
+- $response->headers() : array;
+- return Http::dd()->get
+#### Request Data
+- Http::post
+- Http::get
+- Http::asForm()->post
+- Http::withBody
+- Http::attach
+- fopen
+#### Headers
+- Http::withHeaders
+#### Authentication
+- Http::withBasicAuth
+- Http::withDigestAuth
+- Http::withToken
+#### Timeout
+- Http::timeout(3)->get(...);
+#### Retries
+- Http::retry(3, 100)->post(...);
+#### Error Handling
+- $response->successful();
+- $response->failed();
+- $response->clientError();
+- $response->serverError();
+- $response->throw();
+- return Http::post(...)->throw()->json();
+#### Guzzle Options
+- Http::withOptions
+### Concurrent Requests
+- Http::pool
+### Testing
+#### Faking Responses
+- Http::fake();
+- Http::response
+- Http::sequence
+#### Inspecting Requests
+- Http::withHeaders
+- Http::assertSent
+- Http::assertNotSent
+- Http::assertNothingSent();
+
 ## 4-11.Localization
+### Introduction
+- resources/lang
+#### Configuring The Locale
+- App::setLocale
+- App::currentLocale
+- App::isLocale
+### Defining Translation Strings
+#### Using Short Keys
+#### Using Translation Strings As Keys
+### Retrieving Translation Strings
+- __ function
+#### Replacing Parameters In Translation Strings
+#### Pluralization
+- trans_choice
+### Overriding Package Language Files
+
 ## 4-12.Mail
+### Introduction
+#### Configuration
+- config/mail.php
+#### Driver Prerequisites
+### Generating Mailables
+- php artisan make:mail OrderShipped
+### Writing Mailables
+#### Configuring The Sender
+- build
+- from
+#### Configuring The View
+- text
+#### View Data
+- with
+#### Attachments
+- attach
+- attachFromStorage
+- attachFromStorageDisk
+- attachData
+#### Inline Attachments
+- embed
+- embedData
+#### Customizing The SwiftMailer Message
+- withSwiftMessage
+### Markdown Mailables
+#### Generating Markdown Mailables
+- php artisan make:mail OrderShipped --markdown=
+- markdown
+#### Writing Markdown Messages
+- @component
+- @endcomponent
+- 'mail::button'
+- 'mail::panel'
+- 'mail::table'
+#### Customizing The Components
+- php artisan vendor:publish --tag=
+### Sending Mail
+- Mail::to
+- Mail::mailer
+#### Queueing Mail
+- queue
+- later
+- onConnection
+- onQueue
+### Rendering Mailables
+#### Previewing Mailables In The Browser
+### Localizing Mailables
+- HasLocalePreference
+### Testing Mailables
+- assertSeeInHtml
+- assertDontSeeInHtml
+- assertSeeInText
+- assertDontSeeInText.
+### Mail & Local Development
+### Events
+
 ## 4-13.Notifications
+### Introduction
+### Generating Notifications
+- php artisan make:notification
+### Sending Notifications
+#### Using The Notifiable Trait
+- use Notifiable;
+- notify
+#### Using The Notification Facade
+- Notification::send
+#### Specifying Delivery Channels
+- via
+#### Queueing Notifications
+- use Queueable;
+- $connection
+- viaQueues
+- $afterCommit
+#### On-Demand Notifications
+- Notification::route
+### Mail Notifications
+#### Formatting Mail Messages
+- toMail
+- view
+- error
+#### Customizing The Sender
+- from
+#### Customizing The Recipient
+#### Customizing The Subject
+#### Customizing The Mailer
+- mailer
+#### Customizing The Templates
+- php artisan vendor:publish --tag=
+#### Attachments
+- attach
+- attachFromStorage
+- attachData
+#### Using Mailables
+- routeNotificationFor
+#### Previewing Mail Notifications
+### Markdown Mail Notifications
+#### Generating The Message
+- php artisan make:notification InvoicePaid --markdown=
+- markdown
+#### Writing The Message
+- @component
+- @endcomponent
+- 'mail::message'
+- 'mail::button'
+- 'mail::panel'
+- 'mail::table'
+#### Customizing The Components
+- php artisan vendor:publish --tag=
+- theme
+### Database Notifications
+- php artisan notifications:table
+- php artisan migrate
+#### Prerequisites
+#### Formatting Database Notifications
+- toArray
+#### Accessing The Notifications
+- unreadNotifications
+#### Marking Notifications As Read
+- markAsRead
+### Broadcast Notifications
+#### Prerequisites
+#### Formatting Broadcast Notifications
+- toBroadcast
+- onConnection
+- onQueue
+- broadcastType
+- receivesBroadcastNotificationsOn
+#### Listening For Notifications
+### SMS Notifications
+#### Prerequisites
+- composer require laravel/nexmo-notification-channel nexmo/laravel
+#### Formatting SMS Notifications
+- toNexmo
+- unicode
+#### Formatting Shortcode Notifications
+- toShortcode
+#### Customizing The "From" Number
+- from
+#### Routing SMS Notifications
+- routeNotificationForNexmo
+### Slack Notifications
+#### Prerequisites
+- composer require laravel/slack-notification-channel
+#### Formatting Slack Notifications
+- toSlack
+- from
+- to
+#### Slack Attachments
+- attachment
+- markdown
+#### Routing Slack Notifications
+- routeNotificationForSlack
+### Localizing Notifications
+- locale
+- Notification::locale
+- HasLocalePreference
+### Notification Events
+### Custom Channels
+
 ## 4-14.Package Development
+### Introduction
+#### A Note On Facades
+### Package Discovery
+- extra
+- "dont-discover"
+### Service Providers
+### Resources
+#### Configuration
+- boot
+- register
+#### Migrations
+- loadMigrationsFrom
+#### Routes
+- loadRoutesFrom
+#### Translations
+- loadTranslationsFrom
+- echo trans
+#### Views
+- loadViewsFrom
+- view
+- publishes
+#### View Components
+- loadViewComponentsAs
+### Commands
+- commands
+### Public Assets
+- publishes
+- php artisan vendor:publish --tag=public --force
+### Publishing File Groups
+- php artisan vendor:publish --tag=config
+
 ## 4-15.Queues
+### Introduction
+#### Connections Vs. Queues
+- php artisan queue:work --queue=high,default
+#### Driver Notes & Prerequisites
+- php artisan queue:table
+- php artisan migrate
+### Creating Jobs
+- php artisan make:job ProcessPodcast
+#### Generating Job Classes
+#### Class Structure
+- handle
+- withoutRelations
+#### Unique Jobs
+- ShouldBeUnique
+- uniqueId
+- uniqueFor
+- ShouldBeUniqueUntilProcessing
+- uniqueVia
+### Job Middleware
+- middleware
+- make:job
+#### Rate Limiting
+- Limit::perMinute
+- Limit::none
+- Limit::perHour
+- RateLimited
+#### Preventing Job Overlaps
+- WithoutOverlapping
+- middleware
+- dontRelease
+#### Throttling Exceptions
+- ThrottlesExceptions
+- backoff
+- by
+### Dispatching Jobs
+- dispatch
+- dispatchIf
+- dispatchUnless
+#### Delayed Dispatching
+- delay
+- dispatchAfterResponse
+- afterResponse
+#### Synchronous Dispatching
+- dispatchSync
+#### Jobs & Database Transactions
+- after_commit
+- afterCommit
+#### Job Chaining
+- chain
+- Bus::chain
+- catch
+- Throwable
+#### Customizing The Queue & Connection
+- onQueue
+- onConnection
+#### Specifying Max Job Attempts / Timeout Values
+- php artisan queue:work --tries=3
+- public $tries = 5;
+- retryUntil
+- release
+- maxExceptions
+- php artisan queue:work --timeout=30
+#### Error Handling
+- queue:work
+- release
+- fail
+### Job Batching
+- php artisan queue:batches-table
+- php artisan migrate
+#### Defining Batchable Jobs
+- batch
+#### Dispatching Batches
+- Bus::batch
+- then
+- catch
+- finally
+- name
+- onConnection
+- onQueue
+#### Adding Jobs To Batches
+- add
+#### Inspecting Batches
+- $batch->id;
+- $batch->name;
+- $batch->totalJobs;
+- $batch->pendingJobs;
+- $batch->failedJobs;
+- $batch->processedJobs();
+- $batch->progress();
+- $batch->finished();
+- $batch->cancel();
+- $batch->cancelled();
+- Bus::findBatch
+#### Cancelling Batches
+- cancel
+#### Batch Failures
+- allowFailures
+- php artisan queue:retry-batch 
+#### Pruning Batches
+- queue:prune-batches
+- unfinished
+### Queueing Closures
+### Running The Queue Worker
+#### The queue:work Command
+- php artisan queue:work
+- php artisan queue:listen
+- php artisan queue:work redis
+- php artisan queue:work redis --queue=emails
+- php artisan queue:work --once
+- php artisan queue:work --max-jobs=1000
+- php artisan queue:work --stop-when-empty
+- php artisan queue:work --max-time=3600
+- php artisan queue:work --sleep=3
+#### Queue Priorities
+- php artisan queue:work --queue=high,low
+#### Queue Workers & Deployment
+- php artisan queue:restart
+#### Job Expirations & Timeouts
+- php artisan queue:work --timeout=60
+### Supervisor Configuration
+- sudo apt-get install supervisor
+- sudo supervisorctl reread
+- sudo supervisorctl update
+- sudo supervisorctl start laravel-worker:*
+### Dealing With Failed Jobs
+- php artisan queue:failed-table
+- php artisan migrate
+- php artisan queue:work redis --tries=3
+- php artisan queue:work redis --tries=3 --backoff=3
+- backoff
+#### Cleaning Up After Failed Jobs
+- Throwable
+- failed
+#### Retrying Failed Jobs
+- php artisan queue:failed
+- php artisan queue:retry 5
+- php artisan queue:retry --range=5-10
+- php artisan:retry --queue=name
+- php artisan queue:retry all
+- php artisan queue:forget 5
+- php artisan queue:flush
+#### Ignoring Missing Models
+- deleteWhenMissingModels
+- Queue::failing
+#### Failed Job Events
+### Clearing Jobs From Queues
+- php artisan queue:clear
+- php artisan queue:clear redis --queue=emails
+### Job Events
+- Queue::before
+- Queue::after
+- Queue::looping
+
 ## 4-16.Task Scheduling
+### Introduction
+### Defining Schedules
+- schedule
+- __invoke
+- php artisan schedule:list
+#### Scheduling Artisan Commands
+- command
+#### Scheduling Queued Jobs
+- job
+#### Scheduling Shell Commands
+- exec
+#### Schedule Frequency Options
+- days
+- between
+- when
+- skip
+- environments
+#### Timezones
+- timezone
+- scheduleTimezone
+#### Preventing Task Overlaps
+- withoutOverlapping
+#### Running Tasks On One Server
+- onOneServer
+#### Background Tasks
+- runInBackground
+#### Maintenance Mode
+- evenInMaintenanceMode
+### Running The Scheduler
+- php artisan schedule:run
+#### Running The Scheduler Locally
+- php artisan schedule:work
+### Task Output
+- sendOutputTo
+- emailOutputTo
+- emailOutputOnFailure
+### Task Hooks
+- before
+- after
+- onSuccess
+- onFailure
+- pingBefore
+- thenPing
+- pingBeforeIf
+- thenPingIf
+- pingOnSuccess
+- pingOnFailure
 
 # 5.Security
 ## 5-1.Authentication
