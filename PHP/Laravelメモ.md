@@ -2012,19 +2012,601 @@ with
 
 # 6.Database
 ## 6-1.Getting Started
+### Introduction
+#### Configuration
+- config/database.php
+#### Read & Write Connections
+### Running SQL Queries
+- DB::select
+- DB::insert
+- DB::update
+- DB::delete
+- DB::statement
+- DB::unprepared
+#### Using Multiple Database Connections
+- DB::connection
+#### Listening For Query Events
+### Database Transactions
+- DB::transaction
+- DB::beginTransaction
+- DB::rollBack();
+- DB::commit();
+### Connecting To The Database CLI
+- php artisan db
+- php artisan db mysql
+
 ## 6-2.Query Builder
+### Introduction
+### Running Database Queries
+- DB::table
+- first
+- value
+- find
+- pluck
+#### Chunking Results
+- chunk
+- chunkById
+#### Streaming Results Lazily
+- lazyById
+#### Aggregates
+- count
+- max
+- min
+- avg
+- sum
+- exists
+- doesntExist
+### Select Statements
+- select
+- distinct
+- addSelect
+### Raw Expressions
+- DB::raw
+- selectRaw
+- whereRaw
+- orWhereRaw
+- havingRaw
+- orHavingRaw
+- orderByRaw
+- groupByRaw
+### Joins
+- join
+- leftJoin
+- rightJoin
+- crossJoin
+- where
+- orWhere
+- joinSub
+- leftJoinSub
+- rightJoinSub
+### Unions
+- union
+- unionAll
+### Basic Where Clauses
+#### Where Clauses
+- where
+#### Or Where Clauses
+- orWhere
+#### JSON Where Clauses
+- whereJsonContains
+- whereJsonLength
+#### Additional Where Clauses
+- whereBetween
+- whereNotBetween
+- whereIn
+- whereNotIn
+- orWhereIn
+- orWhereNotIn
+- whereNull
+- whereNotNull
+- orWhereNull
+- orWhereNotNull
+- whereDate
+- whereMonth
+- whereDay
+- whereYear
+- whereTime
+- whereColumn
+- orWhereColumn
+#### Logical Grouping
+### Advanced Where Clauses
+#### Where Exists Clauses
+- whereExists
+#### Subquery Where Clauses
+- User::where
+### Ordering, Grouping, Limit & Offset
+#### Ordering
+- orderBy
+- latest
+- oldest
+- inRandomOrder
+- reorder
+#### Grouping
+- groupBy
+- having
+#### Limit & Offset
+- skip
+- skip
+- limit
+- offset
+### Conditional Clauses
+- when
+### Insert Statements
+- insert
+- insertOrIgnore
+- insertGetId
+#### Upserts
+- upsert
+### Update Statements
+- update
+- updateOrInsert
+#### Updating JSON Columns
+#### Increment & Decrement
+- increment
+- decrement
+### Delete Statements
+- delete
+- truncate
+### Pessimistic Locking
+- sharedLock
+- lockForUpdate
+### Debugging
+- dd
+- dump
+
 ## 6-3.Pagination
+### Introduction
+### Basic Usage
+#### Paginating Query Builder Results
+- paginate
+- simplePaginate
+#### Paginating Eloquent Results
+#### Manually Creating A Paginator
+#### Customizing Pagination URLs
+- withPath
+- appends
+- withQueryString
+- fragment
+### Displaying Pagination Results
+- links
+#### Adjusting The Pagination Link Window
+- onEachSide
+#### Converting Results To JSON
+### Customizing The Pagination View
+- links
+- defaultView
+- defaultSimpleView
+#### Using Bootstrap
+- useBootstrap
+### Paginator Instance Methods
+
 ## 6-4.Migrations
+### Introduction
+### Generating Migrations
+- php artisan make:migration create_flights_table
+#### Squashing Migrations
+- php artisan schema:dump
+- php artisan schema:dump --prune
+### Migration Structure
+- up
+- down
+### Running Migrations
+- php artisan migrate
+- php artisan migrate:status
+- php artisan migrate --force
+#### Rolling Back Migrations
+- php artisan migrate:rollback
+- php artisan migrate:rollback --step=5
+- php artisan migrate:reset
+- php artisan migrate:refresh
+- php artisan migrate:refresh --seed
+- php artisan migrate:refresh --step=5
+- php artisan migrate:fresh
+- php artisan migrate:fresh --seed
+### Tables
+#### Creating Tables
+- Schema::create
+- Schema::hasTable
+- Schema::connection
+- engine
+- charset
+- collation
+- temporary
+#### Updating Tables
+- Blueprint
+#### Renaming / Dropping Tables
+- Schema::rename
+- Schema::drop
+- Schema::dropIfExists
+### Columns
+#### Creating Columns
+#### Available Column Types
+bigIncrements
+bigInteger
+binary
+boolean
+char
+dateTimeTz
+dateTime
+date
+decimal
+double
+enum
+float
+foreignId
+geometryCollection
+geometry
+id
+increments
+integer
+ipAddress
+json
+jsonb
+lineString
+longText
+macAddress
+mediumIncrements
+mediumInteger
+mediumText
+morphs
+multiLineString
+multiPoint
+multiPolygon
+nullableMorphs
+nullableTimestamps
+nullableUuidMorphs
+point
+polygon
+rememberToken
+set
+smallIncrements
+smallInteger
+softDeletesTz
+softDeletes
+string
+text
+timeTz
+time
+timestampTz
+timestamp
+timestampsTz
+timestamps
+tinyIncrements
+tinyInteger
+tinyText
+unsignedBigInteger
+unsignedDecimal
+unsignedInteger
+unsignedMediumInteger
+unsignedSmallInteger
+unsignedTinyInteger
+uuidMorphs
+uuid
+year
+#### Column Modifiers
+- nullable
+- after
+#### Modifying Columns
+- change
+- renameColumn
+#### Dropping Columns
+- dropColumn
+### Indexes
+#### Creating Indexes
+- unique
+#### Renaming Indexes
+- renameIndex
+#### Dropping Indexes
+- dropIndex
+#### Foreign Key Constraints
+- foreign
+- foreignId
+- constrained
+- onUpdate
+- onDelete
+- dropForeign
+- Schema::enableForeignKeyConstraints();
+- Schema::disableForeignKeyConstraints();
+
 ## 6-5.Seeding
+### Introduction
+### Writing Seeders
+- php artisan make:seeder UserSeeder
+#### Using Model Factories
+#### Calling Additional Seeders
+### Running Seeders
+- php artisan db:seed
+- php artisan db:seed --class=UserSeeder
+- php artisan migrate:fresh --seed
+- php artisan db:seed --force
+
 ## 6-6.Redis
+### Introduction
+### Configuration
+#### Clusters
+#### Predis
+#### phpredis
+### Interacting With Redis
+- Redis::get
+- Redis::lrange(
+- Redis::command
+- Redis::connection
+#### Transactions
+- Redis::transaction
+- Redis::eval
+#### Pipelining Commands
+- Redis::pipeline
+### Pub / Sub
+- Redis::subscribe
+- Redis::publish
+- Redis::psubscribe
 
 # 7.Eloquent ORM
 ## 7-1.Getting Started
+### Introduction
+### Generating Model Classes
+- php artisan make:model Flight
+- php artisan make:model Flight --migration
+- php artisan make:model Flight --factory
+- php artisan make:model Flight -f
+- php artisan make:model Flight --seed
+- php artisan make:model Flight -s
+- php artisan make:model Flight --controller
+- php artisan make:model Flight -c
+- php artisan make:model Flight -mfsc
+- php artisan make:model Member --pivot
+### Eloquent Model Conventions
+#### Table Names
+#### Primary Keys
+#### Timestamps
+#### Database Connections
+#### Default Attribute Values
+### Retrieving Models
+- Flight::all
+- fresh
+- refresh
+#### Collections
+- reject
+#### Chunking Results
+- chunk
+- chunkById
+#### Streaming Results Lazily
+- Flight::lazy
+- lazyById
+#### Cursors
+- cursor
+#### Advanced Subqueries
+- select
+- addSelect
+- orderBy
+### Retrieving Single Models / Aggregates
+- find
+- first
+- firstWhere
+- firstOr
+- findOrFail
+- firstOrFail
+#### Retrieving Or Creating Models
+- firstOrNew
+- firstOrCreate
+#### Retrieving Aggregates
+- count
+- sum
+- max
+### Inserting & Updating Models
+#### Inserts
+- save
+- Flight::create
+#### Updates
+- update
+- isDirty
+- isClean
+- wasChanged
+- getOriginal
+#### Mass Assignment
+- fill
+#### Upserts
+- Flight::updateOrCreate
+- Flight::upsert
+### Deleting Models
+- delete
+- Flight::truncate
+- Flight::destroy
+#### Soft Deleting
+- softDeletes
+- dropSoftDeletes
+- trashed
+- restore
+- withTrashed
+- forceDelete
+#### Querying Soft Deleted Models
+- Flight::withTrashed
+- Flight::onlyTrashed
+### Replicating Models
+- replicate
+### Query Scopes
+#### Global Scopes
+- withoutGlobalScope
+#### Local Scopes
+### Comparing Models
+- is
+- isNot
+### Events
+#### Using Closures
+- booted
+#### Observers
+- php artisan make:observer UserObserver --model=User
+#### Muting Events
+
 ## 7-2.Relationships
+### Introduction
+### Defining Relationships
+#### One To One
+- hasOne
+- belongsTo
+#### One To Many
+- hasMany
+#### One To Many (Inverse) / Belongs To
+- withDefault
+#### Has One Through
+- hasOneThrough
+#### Has Many Through
+- hasManyThrough
+### Many To Many Relationships
+- belongsToMany
+#### Retrieving Intermediate Table Columns
+- pivot
+- withTimestamps
+#### Filtering Queries Via Intermediate Table Columns
+- wherePivot
+- wherePivotIn
+- wherePivotNotIn
+#### Defining Custom Intermediate Table Models
+- using
+### Polymorphic Relationships
+#### One To One
+- morphTo
+#### One To Many
+#### Many To Many
+- morphToMany
+- morphedByMany
+#### Custom Polymorphic Types
+- morphMap
+- Relation::getMorphedModel
+### Dynamic Relationships
+- resolveRelationUsing
+### Querying Relations
+- orWhere
+#### Relationship Methods Vs. Dynamic Properties
+#### Querying Relationship Existence
+- has
+- orHas
+- whereHas
+- orWhereHas
+#### Querying Relationship Absence
+- doesntHave
+- orDoesntHave
+- whereDoesntHave
+- orWhereDoesntHave
+#### Querying Morph To Relationships
+- whereHasMorph
+- whereDoesntHaveMorph
+### Aggregating Related Models
+#### Counting Related Models
+- withCount
+- loadCount
+#### Other Aggregate Functions
+- withSum
+- loadSum
+#### Counting Related Models On Morph To Relationships
+- morphWithCount
+- loadMorphCount
+### Eager Loading
+- with
+- without
+#### Constraining Eager Loads
+- constrain
+#### Lazy Eager Loading
+- load
+- loadMissing
+### Inserting & Updating Related Models
+#### The save Method
+- save
+- saveMany
+- refresh
+- push
+#### The create Method
+- create
+- createMany
+#### Belongs To Relationships
+- associate
+#### Many To Many Relationships
+- attach
+- detach
+- sync
+- toggle
+- updateExistingPivot
+### Touching Parent Timestamps
+
 ## 7-3.Collections
+### Introduction
+### Available Methods
+contains
+diff
+except
+find
+fresh
+intersect
+load
+loadMissing
+modelKeys
+makeVisible
+makeHidden
+only
+toQuery
+unique
+### Custom Collections
+
 ## 7-4.Mutators / Casts
+### Introduction
+### Accessors & Mutators
+#### Defining An Accessor
+- get{Attribute}Attribute
+#### Defining A Mutator
+- set{Attribute}Attribute
+### Attribute Casting
+#### Array & JSON Casting
+#### Date Casting
+#### Query Time Casting
+### Custom Casts
+#### Value Object Casting
+#### Array / JSON Serialization
+- serialize
+#### Inbound Casting
+#### Cast Parameters
+#### Castables
+
 ## 7-5.API Resources
+### Introduction
+### Generating Resources
+- php artisan make:resource UserResource
+- php artisan make:resource User --collection
+- php artisan make:resource UserCollection
+### Concept Overview
+- toArray
+#### Resource Collections
+- collection
+- php artisan make:resource UserCollection
+### Writing Resources
+- collection
+#### Data Wrapping
+#### Pagination
+#### Conditional Attributes
+- mergeWhen
+#### Conditional Relationships
+- whenLoaded
+- whenPivotLoaded
+- whenPivotLoadedAs
+#### Adding Meta Data
+- additional
+### Resource Responses
+- response
+- withResponse
+
 ## 7-6.Serialization
+### Introduction
+### Serializing Models & Collections
+#### Serializing To Arrays
+- attributesToArray
+#### Serializing To JSON
+- toJson
+### Hiding Attributes From JSON
+- makeVisible
+- makeHidden
+### Appending Values To JSON
+- append
+### Date Serialization
+- serializeDate
 
 # 8.Testing
 ## 8-1.Getting Started
