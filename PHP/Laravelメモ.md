@@ -2610,11 +2610,462 @@ unique
 
 # 8.Testing
 ## 8-1.Getting Started
+### Introduction
+### Environment
+- .env.testing
+### Creating Tests
+- php artisan make:test UserTest
+- php artisan make:test UserTest --unit
+### Running Tests
+- vendor/bin/phpunit
+- php artisan test
+- php artisan test --testsuite=Feature --stop-on-failure
+#### Running Tests In Parallel
+- php artisan test --parallel
+- php artisan test --parallel --processes=4
+- php artisan test --parallel --recreate-databases
+
 ## 8-2.HTTP Tests
+### Introduction
+### Making Requests
+#### Customizing Request Headers
+- withHeaders
+#### Cookies
+- withCookie
+- withCookies
+#### Session / Authentication
+- withSession
+- actingAs
+- actingAs
+#### Debugging Responses
+- dump
+- dumpHeaders
+- dumpSession
+### Testing JSON APIs
+- json
+- getJson
+- postJson
+- putJson
+- patchJson
+- deleteJson
+- optionsJson
+- assertJson
+- assertJsonPath
+#### Fluent JSON Testing
+- etc
+- whereType
+- whereAllType
+### Testing File Uploads
+- Storage::fake
+- assertMissing
+### Testing Views
+- assertSee
+- assertSeeInOrder
+- assertSeeText
+- assertSeeTextInOrder
+- assertDontSee
+- assertDontSeeText
+- withViewErrors
+#### Rendering Blade & Components
+- blade
+- component
+### Available Assertions
+#### Response Assertions
+assertCookie
+assertCookieExpired
+assertCookieNotExpired
+assertCookieMissing
+assertCreated
+assertDontSee
+assertDontSeeText
+assertExactJson
+assertForbidden
+assertHeader
+assertHeaderMissing
+assertJson
+assertJsonCount
+assertJsonFragment
+assertJsonMissing
+assertJsonMissingExact
+assertJsonMissingValidationErrors
+assertJsonPath
+assertJsonStructure
+assertJsonValidationErrors
+assertLocation
+assertNoContent
+assertNotFound
+assertOk
+assertPlainCookie
+assertRedirect
+assertSee
+assertSeeInOrder
+assertSeeText
+assertSeeTextInOrder
+assertSessionHas
+assertSessionHasInput
+assertSessionHasAll
+assertSessionHasErrors
+assertSessionHasErrorsIn
+assertSessionHasNoErrors
+assertSessionDoesntHaveErrors
+assertSessionMissing
+assertStatus
+assertSuccessful
+assertUnauthorized
+assertViewHas
+assertViewHasAll
+assertViewIs
+assertViewMissing
+#### Authentication Assertions
+- assertAuthenticated
+- assertGuest
+- assertAuthenticatedAs
+
 ## 8-3.Console Tests
-## 8-4.Browser Tests
+### Introduction
+### Input / Output Expectations
+- expectsQuestion
+- assertExitCode
+- expectsOutput
+- doesntExpectOutput
+- expectsConfirmation
+- expectsTable
+
+## 8-4.Browser Tests(Laravel Dusk)
+### Introduction
+### Installation
+#### Managing ChromeDriver Installations
+#### Using Other Browsers
+### Getting Started
+#### Generating Tests
+- php artisan dusk:make LoginTest
+#### Database Migrations
+#### Running Tests
+- php artisan dusk
+- php artisan dusk:fails
+- php artisan dusk --group=foo
+- driver
+#### Environment Handling
+### Browser Basics
+#### Creating Browsers
+- browse
+#### Navigation
+- visit
+- back
+- forward
+- refresh
+#### Resizing Browser Windows
+- resize
+- maximize
+- fitContent
+- disableFitOnFailure
+- move
+#### Browser Macros
+- macro
+- boot
+#### Authentication
+- loginAs
+#### Cookies
+- cookie
+- plainCookie
+- deleteCookie
+#### Executing JavaScript
+- script
+#### Taking A Screenshot
+- screenshot
+#### Storing Console Output To Disk
+- storeConsoleLog
+#### Storing Page Source To Disk
+- storeSource
+### Interacting With Elements
+#### Dusk Selectors
+#### Text, Values, & Attributes
+- value
+- inputValue
+- text
+- attribute
+#### Interacting With Forms
+- type
+- clear
+- typeSlowly
+- appendSlowly
+- select
+- check
+- uncheck
+- radio
+#### Attaching Files
+- attach
+#### Pressing Buttons
+- press
+- pressAndWaitFor
+#### Clicking Links
+- clickLink
+- seeLink
+#### Using The Keyboard
+- keys
+- type
+#### Using The Mouse
+- click
+- clickAtXPath
+- clickAtPoint
+- doubleClick
+- rightClick
+- clickAndHold
+- releaseMouse
+- mouseover
+- drag
+- dragLeft
+- dragRight
+- dragUp
+- dragDown
+- dragOffset
+#### JavaScript Dialogs
+- waitForDialog
+- assertDialogOpened
+- typeInDialog
+- acceptDialog
+- dismissDialog
+#### Scoping Selectors
+- with
+- elsewhere
+- elsewhereWhenAvailable
+#### Waiting For Elements
+- pause
+- waitFor
+- waitForTextIn
+- waitUntilMissing
+- whenAvailable
+- waitForText
+- waitUntilMissingText
+- waitForLink
+- waitForLocation
+- waitForRoute
+- waitForReload
+- waitUntil
+- waitUntilVue
+- waitUntilVueIsNot
+- waitUsing
+- waitUsing
+#### Scrolling An Element Into View
+- scrollIntoView
+### Available Assertions
+assertTitle
+assertTitleContains
+assertUrlIs
+assertSchemeIs
+assertSchemeIsNot
+assertHostIs
+assertHostIsNot
+assertPortIs
+assertPortIsNot
+assertPathBeginsWith
+assertPathIs
+assertPathIsNot
+assertRouteIs
+assertQueryStringHas
+assertQueryStringMissing
+assertFragmentIs
+assertFragmentBeginsWith
+assertFragmentIsNot
+assertHasCookie
+assertHasPlainCookie
+assertCookieMissing
+assertPlainCookieMissing
+assertCookieValue
+assertPlainCookieValue
+assertSee
+assertDontSee
+assertSeeIn
+assertDontSeeIn
+assertSeeAnythingIn
+assertSeeNothingIn
+assertScript
+assertSourceHas
+assertSourceMissing
+assertSeeLink
+assertDontSeeLink
+assertInputValue
+assertInputValueIsNot
+assertChecked
+assertNotChecked
+assertRadioSelected
+assertRadioNotSelected
+assertSelected
+assertNotSelected
+assertSelectHasOptions
+assertSelectMissingOptions
+assertSelectHasOption
+assertSelectMissingOption
+assertValue
+assertAttribute
+assertAriaAttribute
+assertDataAttribute
+assertVisible
+assertPresent
+assertNotPresent
+assertMissing
+assertDialogOpened
+assertEnabled
+assertDisabled
+assertButtonEnabled
+assertButtonDisabled
+assertFocused
+assertNotFocused
+assertAuthenticated
+assertGuest
+assertAuthenticatedAs
+assertVue
+assertVueIsNot
+assertVueContains
+assertVueDoesNotContain
+### Pages
+#### Generating Pages
+- php artisan dusk:page Login
+#### Configuring Pages
+- url
+- assert
+- elements
+#### Navigating To Pages
+- visit
+- on
+#### Shorthand Selectors
+- elements
+- siteElements
+#### Page Methods
+- createPlaylist
+### Components
+#### Generating Components
+- php artisan dusk:component DatePicker
+#### Using Components
+### Continuous Integration
+#### Heroku CI
+#### Travis CI
+#### GitHub Actions
+
 ## 8-5.Database
+### Introduction
+#### Resetting The Database After Each Test
+### Defining Model Factories
+#### Concept Overview
+- database/factories/UserFactory.php
+#### Generating Factories
+- php artisan make:factory PostFactory
+- php artisan make:factory PostFactory --model=Post
+#### Factory States
+- state
+#### Factory Callbacks
+- afterMaking
+- afterCreating
+- configure
+### Creating Models Using Factories
+#### Instantiating Models
+- factory
+- make
+- state
+- newFactory
+#### Persisting Models
+- create
+- save
+#### Sequences
+- admin
+### Factory Relationships
+#### Has Many Relationships
+- has
+- posts
+- hasPosts
+#### Belongs To Relationships
+- for
+- forUser
+#### Many To Many Relationships
+- hasAttached
+#### Polymorphic Relationships
+- morphToMany
+- morphedByMany
+#### Defining Relationships Within Factories
+- belongsTo
+- morphTo
+### Running Seeders
+- seed
+### Available Assertions
+- assertDatabaseCount
+- assertDatabaseHas
+- assertDatabaseMissing
+- assertDeleted
+- assertSoftDeleted
+
 ## 8-6.Mocking
+### Introduction
+### Mocking Objects
+- mock
+- partialMock
+- Mockery::spy 
+### Mocking Facades
+- Cache::shouldReceive
+#### Facade Spies
+- Cache::spy
+### Bus Fake
+- Bus::fake
+- assertDispatched
+- assertNotDispatched
+#### Job Chains
+- Bus::assertChained
+#### Job Batches
+- Bus::assertBatched
+### Event Fake
+- Event::fake
+- Event::assertDispatched
+- Event::assertNotDispatched
+- Event::assertNothingDispatched
+- Event::assertListening
+- fake
+- fakeFor
+#### Scoped Event Fakes
+### HTTP Fake
+### Mail Fake
+- Mail::fake
+- Mail::assertNothingSent
+- Mail::assertSent
+- Mail::assertNotSent
+- Mail::assertQueued
+- Mail::assertNotQueued
+- Mail::assertNothingQueued
+- assertSent
+- assertNotSent
+### Notification Fake
+- Notification::fake
+- Notification::assertNothingSent
+- Notification::assertSentTo
+- Notification::assertNotSentTo
+### Queue Fake
+- Queue::fake
+- Queue::assertNothingPushed
+- Queue::assertPushedOn
+- Queue::assertPushed
+- Queue::assertNotPushed
+- assertPushed
+- assertNotPushed
+#### Job Chains
+- Queue::assertPushedWithChain
+- assertPushedWithoutChain
+### Storage Fake
+- Storage::fake
+- Storage::disk('photos')->assertExists('photo1.jpg');
+- Storage::disk('photos')->assertExists(['photo1.jpg', 'photo2.jpg']);
+- Storage::disk('photos')->assertMissing('missing.jpg');
+- Storage::disk('photos')->assertMissing(['missing.jpg', 'non-existing.jpg']);
+    }
+}
+### Interacting With Time
+- $this->travel(5)->milliseconds();
+- $this->travel(5)->seconds();
+- $this->travel(5)->minutes();
+- $this->travel(5)->hours();
+- $this->travel(5)->days();
+- $this->travel(5)->weeks();
+- $this->travel(5)->years();
+- $this->travel(-5)->hours();
+- $this->travelTo(now()->subHours(6));
+- $this->travelBack();
 
 # 9.Packages
 ## 9-1.Breeze
