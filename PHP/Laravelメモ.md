@@ -1850,11 +1850,165 @@ with
 
 # 5.Security
 ## 5-1.Authentication
+### Introduction
+- config/auth.php
+#### Starter Kits
+#### Database Considerations
+#### Ecosystem Overview
+- Laravel Breeze
+- Laravel Jetstream
+- Laravel Fortify
+- Laravel Sanctum
+- Passport
+### Authentication Quickstart
+#### Install A Starter Kit
+#### Retrieving The Authenticated User
+- Auth::user();
+- Auth::id();
+- Auth::check()
+#### Protecting Routes
+- middleware('auth')
+- return route('login');
+- middleware('auth:admin');
+#### Login Throttling
+### Manually Authenticating Users
+- Auth::attempt
+- Auth::guard
+#### Remembering Users
+#### Other Authentication Methods
+- Auth::login
+- Auth::loginUsingId
+- Auth::once
+### HTTP Basic Authentication
+- middleware('auth.basic')
+- .htaccess
+    - RewriteCond %{HTTP:Authorization} ^(.+)$
+    - RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+#### Stateless HTTP Basic Authentication
+- Auth::onceBasic
+- middleware('auth.basic.once')
+### Logging Out
+- Auth::logout
+#### Invalidating Sessions On Other Devices
+- Auth::logoutOtherDevices
+### Password Confirmation
+#### Configuration
+- config/auth.php
+#### Routing
+#### Protecting Routes
+- middleware(['password.confirm'])
+### Adding Custom Guards
+- Auth::extend
+- Auth::createUserProvider
+#### Closure Request Guards
+- Auth::viaRequest
+### Adding Custom User Providers
+- Auth::provider
+#### The User Provider Contract
+- retrieveById
+- retrieveByToken
+- updateRememberToken
+- retrieveByCredentials
+- validateCredentials
+#### The Authenticatable Contract
+- getAuthIdentifierName
+- getAuthIdentifier
+- getAuthPassword
+- getRememberToken
+- setRememberToken
+- getRememberTokenName
+### Social Authentication
+### Events
+
 ## 5-2.Authorization
+### Introduction
+### Gates
+#### Writing Gates
+- Gate::define
+#### Authorizing Actions
+- Gate::allows
+- Gate::forUser
+- Gate::any
+- Gate::none
+- Gate::authorize
+- Gate::check
+#### Gate Responses
+- Gate::inspect
+#### Intercepting Gate Checks
+- Gate::before
+- Gate::after
+### Creating Policies
+#### Generating Policies
+- php artisan make:policy PostPolicy
+- php artisan make:policy PostPolicy --model=Post
+#### Registering Policies
+- PostPolicy
+- Gate::guessPolicyNamesUsing
+### Writing Policies
+#### Policy Methods
+#### Policy Responses
+#### Methods Without Models
+- create
+#### Guest Users
+#### Policy Filters
+### Authorizing Actions Using Policies
+- cannot
+#### Via The User Model
+#### Via Controller Helpers
+- authorizeResource
+#### Via Middleware
+#### Via Blade Templates
+- @can
+- @endcan
+- @cannot
+- @elsecannot
+- @endcannot
+- @canany
+- @elsecanany
+- @endcanany
+#### Supplying Additional Context
+
 ## 5-3.Email Verification
+### Introduction
+#### Model Preparation
+#### Database Preparation
+- php artisan migrate
+### Routing
+#### The Email Verification Notice
+#### The Email Verification Handler
+#### Resending The Verification Email
+#### Protecting Routes
+### Customization
+### Events
+
 ## 5-4.Encryption
+### Introduction
+### Configuration
+### Using The Encrypter
+- Crypt::encryptString
+- Crypt::decryptString
+
 ## 5-5.Hashing
+### Introduction
+### Configuration
+### Basic Usage
+#### Hashing Passwords
+- Hash::make
+#### Verifying That A Password Matches A Hash
+- Hash::check
+#### Determining If A Password Needs To Be Rehashed
+- Hash::needsRehash
+
 ## 5-6.Password Reset
+### Introduction
+#### Model Preparation
+#### Database Preparation
+- php artisan migrate
+#### Configuring Trusted Hosts
+### Routing
+#### Requesting The Password Reset Link
+#### Resetting The Password
+### Customization
 
 # 6.Database
 ## 6-1.Getting Started
