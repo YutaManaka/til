@@ -3068,19 +3068,100 @@ assertVueDoesNotContain
 - $this->travelBack();
 
 # 9.Packages
-## 9-1.Breeze
-## 9-2.Cashier (Stripe)
-## 9-3.Cashier (Paddle)
-## 9-4.Dusk
-## 9-5.Envoy
-## 9-6.Fortify
-## 9-7.Homestead
-## 9-8.Horizon
-## 9-9.Jetstream
-## 9-10.Passport
-## 9-11.Sail
-## 9-12.Sanctum
-## 9-13.Scout
-## 9-14.Socialite
-## 9-15.Telescope
-## 9-16.Valet
+## 9-1.環境構築
+### Homestead
+開発環境構築ツール。
+Vagrantを利用して仮想マシーンを簡単に構築できる。
+
+### Sail
+Docker 開発環境構築ツール。
+PHP、MySQL、Redisを使用してLaravelアプリケーションを構築するための優れた出発点。
+Laradockよりも軽量かつ公式なので安心？
+
+### Valet
+簡便な環境構築ツール。
+Nginx や Dnsmasq などのソフトウェアを組み合わせたライブラリ。
+Homesteadと違い、ローカル環境に仮想サーバーを構築する。
+Homesteadより軽量で設定が楽。
+
+## 9-2.認証
+### Breeze
+下記の特徴を持つスターターキット。Laravel Jetstreamよりもシンプル。
+- login
+- registration
+- password reset
+- email verification
+- password confirmation
+- Blade templates
+- Tailwind CSS
+
+### Jetstream
+下記の特徴を持つスターターキット。Laravel Breezeより本格的。
+- login
+- registration
+- password reset
+- email verification
+- two-factor authentication
+- password confirmation
+- session management
+- Blade templates
+- Tailwind CSS
+- Livewire or Inertia
+
+### Fortify
+Jetstreamの認証機能部分を取り出したパッケージ。
+ログイン、ユーザ登録画面を自分で作成する必要がある。
+- login
+- registration
+- password reset
+- email verification
+
+### Passport
+APIにOAuthに従った認証機能を追加できるツール。
+(OAuthを発行する際に必要)
+
+### Sanctum
+トークンベースの認証システム構築のためのツール。
+Laravel Passportに似ているが、SanctumはSPA開発に向いている。
+
+### Socialite
+ソーシャルログイン機能(OAuth認証)を実装するためのツール
+(発行されたOAuthを使ってログインする際に必要)
+
+## 9-3.決済
+### Cashier (Stripe)
+Stripe(決済プラットフォーム)のサブスクリプション決済と連携するためのツール。
+- coupons
+- swapping subscription
+- subscription "quantities"
+- cancellation grace periods
+- even generate invoice PDFs
+
+### Cashier (Paddle)
+Paddle(決済プラットフォーム)のサブスクリプション決済と連携するためのツール。
+- coupons
+- swapping subscription
+- subscription "quantities"
+- cancellation grace periods
+
+## 9-4.検索
+### Scout
+Eloquentモデルに全文検索機能を追加するツール。
+
+## 9-5.テスト
+### Dusk
+テストAPIを提供するツール。
+ブラウザテストを自動化できる。
+
+### Telescope
+ローカル開発環境でデバッグを釣るためのツール。
+
+## 9-6.デプロイ
+### Envoy
+リモートサーバーでデプロイするためのツール。
+指定したサーバにsshで接続して、コマンドを打ち込むなどの手作業を自動的にコマンド１発でやってくれる。
+
+## 9-7.運用
+### Horizon
+Redisキューのためのダッシュボード。
+本番運用用のモニタリングツール。
